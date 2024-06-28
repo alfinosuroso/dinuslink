@@ -25,7 +25,21 @@ if (uri_string() != "") {
     <link rel="stylesheet" href="Sight/assets/css/owl.carousel.css">
     <link rel="stylesheet" href="Sight/assets/css/owl.theme.css">
     <link rel="stylesheet" href="Sight/assets/css/main.css">
-    <link rel="stylesheet" href="Sight/assets/css/one-page.css">
+    <?php
+    if ($hlm == "Beranda") {
+    ?>
+        <link rel="stylesheet" href="Sight/assets/css/one-page.css">
+    <?php
+    }
+    ?>
+    <?php
+    if ($hlm != "Beranda") {
+    ?>
+        <link rel="stylesheet" href="Sight/assets/css/section.css">
+        <link rel="stylesheet" href="Sight/assets/css/about.css">
+    <?php
+    }
+    ?>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
 				<script src="assets/js/html5shiv.js"></script>
