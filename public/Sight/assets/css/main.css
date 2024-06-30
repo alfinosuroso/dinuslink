@@ -19,6 +19,9 @@ body
 .purple{
 	background: #4a148c;
 }
+.blue{
+	background: #1434A4;
+}
 .section-wrapper{
 	padding-top: 90px;
 	padding-bottom: 80px;
@@ -261,13 +264,20 @@ body
 	transform: scale(1.1);
 }
 .portfolio-item-details{
-	margin: 20px 0px 50px; 
+	margin: 20px 0px 80px; 
 }
-.portfolio-item-name{
+.portfolio-item-name-truncate{
 	display: inline-block;
 	font-size: 15px;
+	
+	overflow: hidden;
+   	text-overflow: ellipsis;
+   	display: -webkit-box;
+   	-webkit-line-clamp: 4; /* number of lines to show */
+           line-clamp: 4;
+   	-webkit-box-orient: vertical;
 }
-.port-heart, .portfolio-item-name small{
+.port-heart, .portfolio-item-name-truncate small{
 	font-size: 13px;
 	color: #969595;
 }
