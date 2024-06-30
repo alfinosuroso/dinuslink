@@ -5,7 +5,7 @@
                 <h2 class="section-title black">
                     our services
                 </h2> <!-- /.section-title -->
-                <div class="underline purple"></div>
+                <div class="underline blue"></div>
                 <div class="row">
                     <div class="">
                         <img src="assets/images/service.png" alt="service" class="service-img img-responsive">
@@ -86,7 +86,7 @@
             <h2 class="section-title black">
                 portfolio
             </h2> <!-- /.section-title -->
-            <div class="underline purple"></div>
+            <div class="underline blue"></div>
             <div class="row">
                 <div class="col-sm-4 col-xs-6">
                     <div class="portfolio-item">

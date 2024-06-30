@@ -68,9 +68,55 @@ input[type="username"], input[type="email"], input[type="text"], .message{
 	color: #969595;
 }
 input[type="username"]:focus, input[type="email"]:focus, input[type="text"]:focus, .message:focus{
-    border-color: #4a148c;
+    border-color: #1434A4;
     box-shadow: 0 0 8px rgba(74,20,140,.1) !important;
 }
 input.form-control, .message {
-    border-radius: 0px;
+    border-radius: 5px;
+}
+
+/* Tambahan css */
+.btn-sub {
+	border-radius: 0px;
+	color: white;
+	background-color: #4a148c;
+	padding: 10px 25px;
+	margin: 10px 30px;
+	border-color: #4a148c;
+	text-transform: uppercase;
+	transition: all .4s ease-in-out;
+}
+
+.btn-sub:hover {
+	background-color: #fff;
+	border-color: #4a148c;
+	color: #4a148c;
+}
+
+.btn-sub-bottomright {
+    position:fixed;
+	height:60px;
+	bottom:40px;
+	right:40px;
+    border-radius: 10px;
+    color: white;
+    background-color: #4a148c;
+    padding: 10px 25px;
+    margin: 10px 30px;
+    border-color: #4a148c;
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+}
+.btn-sub-bottomright:hover {
+	background-color: #fff;
+	border-color: black;
+	color: black;
+}
+.blue-btn {
+    border-color: #1434A4;
+    background-color: #1434A4;
+}
+.green-btn {
+    border-color: #0C9;
+    background-color: #0C9;
 }

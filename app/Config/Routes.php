@@ -18,6 +18,8 @@ $routes->group('event', function ($routes) {
     $routes->get('', 'EventMhsController::index');
 });
 
+$routes->get('create-event', 'EventMhsController::viewCreateEvent');
+
 $routes->group('berita', function ($routes) {
     $routes->get('', 'BeritaMhsController::index');
 });
@@ -30,4 +32,3 @@ $routes->group('profil', function ($routes) {
 $routes->get('login', 'AuthController::login');
 $routes->post('login', 'AuthController::login', ['filter' => 'redirect']);
 $routes->get('logout', 'AuthController::logout');
-

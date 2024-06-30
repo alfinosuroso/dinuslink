@@ -1,4 +1,6 @@
 <?= $this->extend('/mahasiswa/layout') ?>
 <?= $this->section('content') ?>
-Ini Partner
+
+ini partner
+<!--  -->
 <?= $this->endSection() ?>
