@@ -42,8 +42,17 @@ class Redirect implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
+        // if (session()->has('isLoggedIn')) {
+        //     return redirect()->to(site_url('partner'));
+        // }
+
         if (session()->has('isLoggedIn')) {
-            return redirect()->to(site_url('partner'));
+            $role = session()->get('role');
+            if ($role === 'admin') {
+                return redirect()->to(site_url('/event'));
+            } else if ($role === 'mahasiswa') {
+                return redirect()->to(site_url('/'));
+            }
         }
     }
 
