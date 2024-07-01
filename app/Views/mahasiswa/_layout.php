@@ -20,34 +20,26 @@ if (uri_string() != "") {
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
     <title>DINUS LINK - <?php echo $hlm ?></title>
 
-    <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/owl.theme.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/main.css">
+    <link rel="stylesheet" href="Sight/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Sight/assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="Sight/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="Sight/assets/css/owl.theme.css">
+    <link rel="stylesheet" href="Sight/assets/css/main.css">
     <?php
     if ($hlm == "Beranda") {
     ?>
-        <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/one-page.css">
+        <link rel="stylesheet" href="Sight/assets/css/one-page.css">
     <?php
     }
     ?>
     <?php
     if ($hlm != "Beranda") {
     ?>
-        <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/section.css">
-        <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/about.css">
-    <?php
-    }
-    if ($hlm == "Create-event") {
-    ?>
-        <link rel="stylesheet" href="<?php echo base_url() ?>Sight/assets/css/contact.css">
+        <link rel="stylesheet" href="Sight/assets/css/section.css">
+        <link rel="stylesheet" href="Sight/assets/css/about.css">
     <?php
     }
     ?>
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
 				<script src="assets/js/html5shiv.js"></script>
