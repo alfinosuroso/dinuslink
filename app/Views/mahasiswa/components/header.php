@@ -65,7 +65,7 @@
         <section class="section-background">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li><a href="index-multipage.html">Beranda</a></li>
+                    <li><a href=".">Beranda</a></li>
                     <li class="active">&nbsp;Partner</li>
                 </ol>
             </div> <!-- /.container -->

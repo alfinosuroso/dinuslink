@@ -31,6 +31,8 @@ $routes->group('event', function ($routes) {
     $routes->get('', 'EventMhsController::index');
 });
 
+$routes->get('create-event', 'EventMhsController::viewCreateEvent');
+
 $routes->group('berita', function ($routes) {
     $routes->get('', 'BeritaMhsController::index');
 });
@@ -38,6 +40,3 @@ $routes->group('berita', function ($routes) {
 $routes->group('profil', function ($routes) {
     $routes->get('', 'ProfilMhsController::index');
 });
-
-
-

@@ -79,7 +79,7 @@
 			<h2 class="section-title black">
 				about us
 			</h2> <!-- /.section-title -->
-			<div class="underline purple"></div>	
+			<div class="underline blue"></div>	
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
 					<img src="assets/images/about-1.png" alt="about" class="about-img">
@@ -134,7 +134,7 @@
 			<h2 class="section-title black">
 				our team
 			</h2> <!-- /.section-title -->
-			<div class="underline purple"></div>
+			<div class="underline blue"></div>
 			<div class="row">
 				<div class="col-sm-3 col-xs-6">
 					<div class="team-item">
