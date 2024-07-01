@@ -18,7 +18,10 @@ $routes->group('event', function ($routes) {
     $routes->get('', 'EventMhsController::index');
 });
 
-$routes->get('create-event', 'EventMhsController::viewCreateEvent');
+$routes->group('create-event', function ($routes) {
+    $routes->get('', 'EventMhsController::viewCreateEvent');
+    $routes->post('', 'EventMhsController::create');
+});
 
 $routes->group('berita', function ($routes) {
     $routes->get('', 'BeritaMhsController::index');

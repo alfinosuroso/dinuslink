@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Event extends Migration
+class VerificationEvent extends Migration
 {
     public function up()
     {
@@ -40,6 +40,15 @@ class Event extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'proposal' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'status' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => FALSE,
+            ],
             'created_at' => [
                 'type' => 'datetime',
                 'null' => TRUE
@@ -51,13 +60,13 @@ class Event extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('events');
+        $this->forge->createTable('verification_events');
     }
 
     //--------------------------------------------------------------------
 
     public function down()
     {
-        $this->forge->dropTable('events');
+        $this->forge->dropTable('verification_events');
     }
 }

@@ -9,6 +9,6 @@ class EventModel extends Model
     protected $table = 'events';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'nama', 'judul', 'deskripsi', 'tanggal', 'gambar', 'created_at', 'updated_at'
+        'nama', 'nim', 'judul', 'deskripsi', 'tanggal', 'gambar', 'created_at', 'updated_at'
     ];
 }
