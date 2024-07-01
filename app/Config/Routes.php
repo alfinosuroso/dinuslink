@@ -19,6 +19,9 @@ $routes->get('login', 'AuthController::login');
 $routes->post('login', 'AuthController::login', ['filter' => 'redirect']);
 $routes->get('logout', 'AuthController::logout');
 
+// register
+$routes->get('register', 'AuthController::register');
+$routes->post('register', 'AuthController::register');
 
 
 $routes->get('/admin', 'Admin::index');
@@ -27,7 +30,7 @@ $routes->group('partner', ['filter' => 'auth'], function ($routes) {
     $routes->get('', 'PartnerMhsController::index');
 });
 
-$routes->group('event', function ($routes) {
+$routes->group('event', ['filter' => 'auth'], function ($routes) {
     $routes->get('', 'EventMhsController::index');
 });
 

@@ -25,7 +25,7 @@
                     <?php
                         // Asumsikan Anda memiliki fungsi atau variabel untuk mengecek status login
                         // Misalnya, is_logged_in() atau $_SESSION['logged_in']
-                        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
+                        if (session('isLoggedIn')=== true) {
                             // Jika user sudah login
                             echo '<li class="' . (uri_string() == 'logout' ? 'active' : '') . '"><a href="logout">Sign Out</a></li>';
                         } else {
@@ -65,7 +65,7 @@
         <section class="section-background">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li><a href=".">Beranda</a></li>
+                    <li><a href="index-multipage.html">Beranda</a></li>
                     <li class="active">&nbsp;Partner</li>
                 </ol>
             </div> <!-- /.container -->
