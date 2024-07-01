@@ -9,12 +9,12 @@ use App\Models\UserModel;
 
 class AuthController extends BaseController
 {
-    protected $user;
+    protected $users;
 
     function __construct()
     {
         helper('form');
-        $this->user = new UserModel();
+        $this->users = new UserModel();
     }
 
     public function login()
@@ -29,7 +29,7 @@ class AuthController extends BaseController
             $nim = $this->request->getVar('nim');
             $password = $this->request->getVar('password');
 
-            $dataUser = $this->user->where(['nim' => $nim])->first(); //pasw 1234567
+            $dataUser = $this->users->where(['nim' => $nim])->first(); //pasw 1234567
 
             if ($dataUser) {
                 if (password_verify($password, $dataUser['password'])) {
@@ -60,6 +60,6 @@ class AuthController extends BaseController
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('login');
+        return redirect()->to('/');
     }
 }
