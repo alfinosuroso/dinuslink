@@ -26,13 +26,16 @@ $routes->post('register', 'AuthController::register');
 
 // $routes->get('/admin', 'Admin::index');
 
+
 // Mahasiswa
 $routes->group('partner', ['filter' => 'authAdmin'], function ($routes) {
+
     $routes->get('', 'PartnerMhsController::index');
 });
 
 $routes->group('event', ['filter' => 'authAdmin'], function ($routes) {
     $routes->get('', 'EventMhsController::index');
+    $routes->get('detail/(:any)', 'EventMhsController::detail/$1');
 });
 
 $routes->group('create-event', ['filter' => 'authAdmin'], function ($routes) {
@@ -44,8 +47,11 @@ $routes->group('berita', ['filter' => 'authAdmin'], function ($routes) {
     $routes->get('', 'BeritaMhsController::index');
 });
 
-$routes->group('profil', ['filter' => 'authAdmin'], function ($routes) {
+$routes->group('profil',  ['filter' => 'authAdmin'], function ($routes) {
     $routes->get('', 'ProfilMhsController::index');
+});
+  $routes->group('komunitas', function ($routes) {
+    $routes->get('', 'KomunitasMhsController::index');
 });
 
 

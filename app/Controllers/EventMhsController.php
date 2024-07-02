@@ -19,7 +19,16 @@ class EventMhsController extends BaseController
 
     public function index(): string
     {
-        $event = $this->event->findAll();
+        $search = $this->request->getGet('search');
+
+        if ($search) {
+            $event = $this->event->like('judul', $search)
+                // ->orLike('deskripsi', $search)
+                ->findAll();
+        } else {
+            $event = $this->event->findAll();
+        }
+
         $verifyEvent = $this->verifyEvent->findAll();
         $data['events'] = $event;
         $data['verifyEvent'] = $verifyEvent;
@@ -67,5 +76,17 @@ class EventMhsController extends BaseController
             //alert the user.
             var_dump($e->getMessage());
         }
+    }
+
+    public function detail($id)
+    {
+        $event = $this->event->find($id);
+
+        if (!$event) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Event not found');
+        }
+
+        $data['event'] = $event;
+        return view('/mahasiswa/v_event_detail', $data);
     }
 }

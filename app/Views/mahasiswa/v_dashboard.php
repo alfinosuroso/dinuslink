@@ -5,72 +5,71 @@
     <div class="container">
         <div class="_section-wrapper">
             <h2 class="section-title black">
-                our services
+                LAYANAN KAMI
             </h2> <!-- /.section-title -->
             <div class="underline blue"></div>
             <div class="row">
                 <div class="">
-                    <img src="assets/images/service.png" alt="service" class="service-img img-responsive">
+                    <img src="Sight/assets/images/service.png" alt="service" class="service-img img-responsive">
                 </div>
                 <div class="col-md-offset-4 col-md-8 col-sm-12 services">
                     <div class="row">
                         <div class="col-xs-6 col-sm-4">
                             <div class="service-item">
                                 <h3 class="section-item-title">
-                                    free delivery
+                                    PENYESUAIAN PARTNER
                                 </h3>
                                 <p class="section-item-detail">
-                                    The Earth was small, light blue, and so touchingly alone, our home that must be so painful.
+                                    Menemukan partner menyesuaikan bakat, minat, atau kebutuhan untuk perlombaanmu.
                                 </p>
                             </div> <!-- /.service-item -->
                         </div>
                         <div class="col-xs-6 col-sm-4">
                             <div class="service-item">
                                 <h3 class="section-item-title">
-                                    refund money
+                                    EVENT KEDEPANNYA
                                 </h3>
                                 <p class="section-item-detail">
-                                    The Earth was small, light blue, and so touchingly alone, our home that must be so painful.
+                                    Lihat dan buat event untuk akses yang lebih mudah bagi seluruh mahasiswa.
                                 </p>
                             </div> <!-- /.service-item -->
                         </div>
                         <div class="col-xs-6 col-sm-4">
                             <div class="service-item">
                                 <h3 class="section-item-title">
-                                    24/7 support
+                                    Komunitas terpercaya
                                 </h3>
                                 <p class="section-item-detail">
-                                    The Earth was small, light blue, and so touchingly alone, our home that must be so painful.
+                                    Gabung pada komunitas yang kalian inginkan atau buat sendiri komunitasmu! 
+                            </div> <!-- /.service-item -->
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <div class="service-item">
+                                <h3 class="section-item-title">
+                                    UDINUS only
+                                </h3>
+                                <p class="section-item-detail">
+                                    Dikhususkan untuk anak UDINUS yang berfokus pada perlombaan dan minat yang diinginkan.
                                 </p>
                             </div> <!-- /.service-item -->
                         </div>
                         <div class="col-xs-6 col-sm-4">
                             <div class="service-item">
                                 <h3 class="section-item-title">
-                                    summer offer
+                                    Berita Terbaru
                                 </h3>
                                 <p class="section-item-detail">
-                                    The Earth was small, light blue, and so touchingly alone, our home that must be so painful.
+                                   Temukan berita terbaru mengenai penghargaan dan kejuaraan dari mahasiswa UDINUS
                                 </p>
                             </div> <!-- /.service-item -->
                         </div>
                         <div class="col-xs-6 col-sm-4">
                             <div class="service-item">
                                 <h3 class="section-item-title">
-                                    winter offer
+                                    GRATIS
                                 </h3>
                                 <p class="section-item-detail">
-                                    The Earth was small, light blue, and so touchingly alone, our home that must be so painful.
-                                </p>
-                            </div> <!-- /.service-item -->
-                        </div>
-                        <div class="col-xs-6 col-sm-4">
-                            <div class="service-item">
-                                <h3 class="section-item-title">
-                                    best gift
-                                </h3>
-                                <p class="section-item-detail">
-                                    The Earth was small, light blue, and so touchingly alone, our home that must be so painful.
+                                    Daftar gratis untuk menjadi partner dengan klik sign in!
                                 </p>
                             </div> <!-- /.service-item -->
                         </div>
@@ -84,12 +83,12 @@
 <?= $this->include('/mahasiswa/components/portfolio_partner') ?>
 
 <!-- Quote -->
-<section class="note purple">
+<section class="note blue">
     <div class="container section-wrapper text-center">
         <p class="quote">
-            “When you’re a carpenter making a beautiful chest of drawers, you’re not going to use a piece of plywood on the back, even though it faces the wall and nobody will see it. You’ll know it’s there, so you’re going to use a beautiful piece of wood on the back. For you to sleep well at night, the aesthetic, the quality, has to be carried all the way through.”
+            “Kemenangan akhir dalam persaingan berasal dari kepuasan batin karena mengetahui bahwa Kamu telah melakukan yang terbaik dan mendapatkan hasil maksimal dari apa yang telah Kamu berikan.”
         </p> <!-- /.quote -->
-        <div class="quoter">Steve Jobs</div>
+        <div class="quoter">Howard Cosell</div>
     </div> <!-- /.container -->
 </section> <!-- /.note -->
 <?= $this->endSection() ?>
