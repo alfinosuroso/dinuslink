@@ -54,8 +54,8 @@ $password = [
                 <div class="card-body p-md-5 mx-md-4">
 
                     <div class="text-center">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                        style="width: 185px;" alt="logo">
+                    <img src="<?= base_url('img/dinuslink-logo.png') ?>" alt="logo" style="width: 185px;">
+                    
                     <h4 class="mt-1 mb-5 pb-1">We are Dinus Link</h4>
                     </div>
 
@@ -92,17 +92,20 @@ $password = [
                             <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
-                    <div class="text-center pt-1 mb-5 pb-1">
+                    <!-- TODO:  -->
                         <?= form_submit('submit', 'Login', ['class' => 'btn btn-primary btn-block fa-lg gradient-custom-2 px-3 rounded-3 me-3']) ?>
                    
-                        <a class="text-muted" href="#!">Forgot password?</a>
-                    </div>
                     
                     <?= form_close() ?>   
 
+                    <br>
                     <div class="d-flex align-items-center justify-content-center pb-4">
                         <p class="mb-0 me-2">Don't have an account?</p>
-                        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-info">Create new</button>
+                        <!-- <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-info">Create new</button> -->
+                        <li class="<?php echo (uri_string() == 'register') ? 'active' : '' ?> list-unstyled">
+                            <a href="register" class="btn btn-outline-info">Register</a>
+                        </li>
+
                     </div>
 
                     <!-- </form> -->
