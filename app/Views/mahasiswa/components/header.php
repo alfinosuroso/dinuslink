@@ -24,15 +24,15 @@
                     <li class=<?php echo (uri_string() == 'komunitas') ? "active" : "" ?>><a href="/komunitas">Komunitas</a></li>
                     <li class=<?php echo (uri_string() == 'profil') ? "active" : "" ?>><a href="/profil">Profil</a></li>
                     <?php
-                    // Asumsikan Anda memiliki fungsi atau variabel untuk mengecek status login
-                    // Misalnya, is_logged_in() atau $_SESSION['logged_in']
-                    if (session('isLoggedIn')) {
-                        // Jika user sudah login
-                        echo '<li class="' . (uri_string() == 'logout' ? 'active' : '') . '"><a href="logout">Sign Out</a></li>';
-                    } else {
-                        // Jika user belum login
-                        echo '<li class="' . (uri_string() == 'login' ? 'active' : '') . '"><a href="login">Sign In</a></li>';
-                    }
+                        // Asumsikan Anda memiliki fungsi atau variabel untuk mengecek status login
+                        // Misalnya, is_logged_in() atau $_SESSION['logged_in']
+                        if (session('isLoggedIn')=== true) {
+                            // Jika user sudah login
+                            echo '<li class="' . (uri_string() == 'logout' ? 'active' : '') . '"><a href="logout">Sign Out</a></li>';
+                        } else {
+                            // Jika user belum login
+                            echo '<li class="' . (uri_string() == 'login' ? 'active' : '') . '"><a href="login">Sign In</a></li>';
+                        }
                     ?>
                 </ul> <!-- /.nav -->
             </div><!-- /.navbar-collapse -->
@@ -66,7 +66,7 @@
         <section class="section-background">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li><a href=".">Beranda</a></li>
+                    <li><a href="index-multipage.html">Beranda</a></li>
                     <li class="active">&nbsp;Partner</li>
                 </ol>
             </div> <!-- /.container -->
