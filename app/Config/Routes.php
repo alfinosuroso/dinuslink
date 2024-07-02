@@ -62,9 +62,16 @@ $routes->group('beritaadm', function($routes){
 
 $routes->group('eventadm', function($routes){
     $routes->get('','EventAdmController::index');
-    $routes->post('','EventAdmController::create');
+    $routes->post('create','EventAdmController::create');
     $routes->post('edit/(:any)', 'EventAdmController::edit/$1');
     $routes->get('delete/(:any)', 'EventAdmController::delete/$1');
+});
+
+$routes->group('verifeventadm', function($routes){
+    $routes->get('','VerifEventAdmController::index');
+    $routes->post('create','VerifEventAdmController::create');
+    $routes->post('edit/(:any)', 'VerifEventAdmController::edit/$1');
+    $routes->get('delete/(:any)', 'VerifEventAdmController::delete/$1');
 });
 
 $routes->group('komunitas', ['filter' => 'auth'], function($routes){

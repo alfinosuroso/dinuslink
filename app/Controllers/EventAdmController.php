@@ -6,91 +6,87 @@ use App\Models\EventModel;
 
 class EventAdmController extends BaseController
 {
-    protected $lomba; // Ubah dari $lomba menjadi $event
+    protected $event; // Ubah dari $lomba menjadi $event
     protected $validation;
 
     public function __construct()
     {
-        $this->lomba = new EventModel(); // Ganti dari new EventModel() menjadi new LombaModel()
+        $this->event = new EventModel(); // Ganti dari new EventModel() menjadi new LombaModel()
     }
 
     public function index()
     {
-        $lomba = $this->lomba->findAll(); // Ganti $this->lomba menjadi $this->event
-        $data['event'] = $lomba;
+        $event = $this->event->findAll(); // Ganti $this->lomba menjadi $this->event
+        $data['event'] = $event;
 
         return view('/admin/v_event', $data);
     }
 
     public function create()
     {
-        $dataGmbrEvent = $this->request->getFile('gambar_event');
+        $dataGmbrEvent = $this->request->getFile('gambar');
 
         $dataForm = [
-            'judul_event' => $this->request->getPost('judul_event'), // Ganti 'judul' menjadi 'judul_event'
-            'organizer' => $this->request->getPost('organizer'),
-            'tgl_event' => $this->request->getPost('tgl_event'),
+            'nama' => $this->request->getPost('nama'), // Ganti 'judul' menjadi 'judul_event'
+            'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'lokasi' => $this->request->getPost('lokasi'),
+            'tanggal' => date("Y-m-d H:i:s"),
             'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
-            'status' => $this->request->getPost('status')
+            'updated_at' => date("Y-m-d H:i:s")
         ];
 
         if ($dataGmbrEvent->isValid()) {
             $fileName = $dataGmbrEvent->getRandomName();
-            $dataForm['gambar_event'] = $fileName;
-            $dataGmbrEvent->move('img/', $fileName);
+            $dataForm['gambar'] = $fileName;
+            $dataGmbrEvent->move('img-event/', $fileName);
         }
 
-        $this->lomba->insert($dataForm); // Ganti $this->event menjadi $this->lomba
+        $this->event->insert($dataForm); // Ganti $this->event menjadi $this->lomba
 
         return redirect()->to('eventadm')->with('success', 'Data Berhasil Ditambah');
     }
 
     public function edit($id)
     {
-        $dataLomba = $this->lomba->find($id); // Ganti $this->lomba menjadi $this->event
+        $dataEvent = $this->event->find($id); // Ganti $this->lomba menjadi $this->event
 
         $dataForm = [
-            'judul_event' => $this->request->getPost('judul_event'), // Ganti 'judul' menjadi 'judul_event'
-            'organizer' => $this->request->getPost('organizer'),
-            'tgl_event' => $this->request->getPost('tgl_event'),
+            'nama' => $this->request->getPost('nama'), // Ganti 'judul' menjadi 'judul_event'
+            'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'lokasi' => $this->request->getPost('lokasi'),
-            'created_at' => $this->request->getPost('created_at'), // Pastikan menggunakan 'created_at' dari form
-            'updated_at' => date("Y-m-d H:i:s"),
-            'status' => $this->request->getPost('status')
+            'tanggal' => date("Y-m-d H:i:s"),
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")
         ];
 
         if ($this->request->getPost('check') == 1) {
-            if ($dataLomba['gambar_event'] != '' && file_exists("img/" . $dataLomba['gambar_event'])) {
-                unlink("img/" . $dataLomba['gambar_event']);
+            if ($dataEvent['gambar'] != '' && file_exists("img-event/" . $dataEvent['gambar'])) {
+                unlink("img-event/" . $dataEvent['gambar']);
             }
 
-            $dataGmbrEvent = $this->request->getFile('gambar_event');
+            $dataGmbrEvent = $this->request->getFile('gambar');
 
             if ($dataGmbrEvent->isValid()) {
                 $fileName = $dataGmbrEvent->getRandomName();
-                $dataGmbrEvent->move('img/', $fileName);
-                $dataForm['gambar_event'] = $fileName;
+                $dataGmbrEvent->move('img-event/', $fileName);
+                $dataForm['gambar'] = $fileName;
             }
         }
 
-        $this->lomba->update($id, $dataForm); // Ganti $this->product menjadi $this->lomba
+        $this->event->update($id, $dataForm); // Ganti $this->product menjadi $this->lomba
 
         return redirect()->to('eventadm')->with('success', 'Data Berhasil Diubah');
     }
 
     public function delete($id)
     {
-        $dataLomba = $this->lomba->find($id); // Ganti $this->lomba menjadi $this->event
+        $dataEvent = $this->event->find($id); // Ganti $this->lomba menjadi $this->event
 
-        if ($dataLomba['gambar_event'] != '' && file_exists("img/" . $dataLomba['gambar_event'])) {
-            unlink("img/" . $dataLomba['gambar_event']);
+        if ($dataEvent['gambar'] != '' && file_exists("img-event/" . $dataEvent['gambar'])) {
+            unlink("img-event/" . $dataEvent['gambar']);
         }
 
-        $this->lomba->delete($id); // Ganti $this->event menjadi $this->lomba
+        $this->event->delete($id); // Ganti $this->event menjadi $this->lomba
 
         return redirect()->to('eventadm')->with('success', 'Data Berhasil Dihapus');
     }
