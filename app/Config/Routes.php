@@ -26,12 +26,13 @@ $routes->post('register', 'AuthController::register');
 
 // $routes->get('/admin', 'Admin::index');
 
-$routes->group('partner', ['filter' => 'auth'], function ($routes) {
+$routes->group('partner', function ($routes) {
     $routes->get('', 'PartnerMhsController::index');
 });
 
 $routes->group('event', ['filter' => 'auth'], function ($routes) {
     $routes->get('', 'EventMhsController::index');
+    $routes->get('detail/(:any)', 'EventMhsController::detail/$1');
 });
 
 $routes->group('create-event', function ($routes) {
@@ -41,6 +42,10 @@ $routes->group('create-event', function ($routes) {
 
 $routes->group('berita', function ($routes) {
     $routes->get('', 'BeritaMhsController::index');
+});
+
+$routes->group('komunitas', function ($routes) {
+    $routes->get('', 'KomunitasMhsController::index');
 });
 
 $routes->group('profil', function ($routes) {
