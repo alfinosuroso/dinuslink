@@ -64,7 +64,7 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
 
         <!-- Event mahasiswa -->
         <?php
-        if (is_array($verifyEvent) && count($verifyEvent) > 0) {
+        if (is_array($verifyEvent) && count($verifyEvent) > 0 && session('nama') != "") {
         ?>
             <h2 class="section-title black">
                 Event Anda
@@ -72,36 +72,41 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
             <div class="underline blue"></div>
             <div class="row">
                 <?php foreach ($verifyEvent as $index => $verify) : ?>
-                    <div class="col-md-3">
-                        <div class="portfolio-item">
-                            <div class="portfolio-img">
-                                <?php if ($verify['gambar'] != '' and file_exists("img-event/" . $verify['gambar'] . "")) : ?>
-                                    <img src="<?php echo base_url() . "img-event/" . $verify['gambar'] ?>" class="port-item">
-                                <?php endif; ?>
-                                <div class="portfolio-img-hover">
-                                    <a href="#"><img src="<?php echo base_url() ?>Sight/assets/images/plus.png" alt="plus" class="plus"></a>
-                                </div> <!-- /.portfolio-img-hover -->
-                            </div> <!-- /.portfolio-img -->
-                            <div class="portfolio-item-details">
-                                <div class="portfolio-item-name-truncate">
-                                    <?php echo $verify['judul'] ?>
-                                    <?php echo '(' . $verify['status'] . ')' ?>
-                                    <br>
-                                    <small><?php echo $verify['deskripsi'] ?></small>
-                                </div> <!-- /.portfolio-item-name-truncate -->
-                                <p>
-                                    <strong>
-                                        Dibuat oleh :
-                                    </strong>
-                                    <?php echo $event['nama'] ?>
-                                </p>
-                                <div class="port-heart">
-                                    <i class="ion-ios-calendar"></i> <strong> Tanggal event:
-                                    </strong> <?php echo date("Y-m-d", strtotime($event['tanggal'])); ?>
-                                </div> <!-- /.port-heart -->
-                            </div> <!-- /.portfolio-item-details -->
-                        </div> <!-- /.portfolio-item -->
-                    </div> <!-- /.col-md-4 -->
+                    <?php if (session('nama') == $verify['nama']) {
+                    ?>
+                        <div class="col-md-3">
+                            <div class="portfolio-item">
+                                <div class="portfolio-img">
+                                    <?php if ($verify['gambar'] != '' and file_exists("img-event/" . $verify['gambar'] . "")) : ?>
+                                        <img src="<?php echo base_url() . "img-event/" . $verify['gambar'] ?>" class="port-item">
+                                    <?php endif; ?>
+                                    <div class="portfolio-img-hover">
+                                        <a href="#"><img src="<?php echo base_url() ?>Sight/assets/images/plus.png" alt="plus" class="plus"></a>
+                                    </div> <!-- /.portfolio-img-hover -->
+                                </div> <!-- /.portfolio-img -->
+                                <div class="portfolio-item-details">
+                                    <div class="portfolio-item-name-truncate">
+                                        <?php echo $verify['judul'] ?>
+                                        <?php echo '(' . $verify['status'] . ')' ?>
+                                        <br>
+                                        <small><?php echo $verify['deskripsi'] ?></small>
+                                    </div> <!-- /.portfolio-item-name-truncate -->
+                                    <p>
+                                        <strong>
+                                            Dibuat oleh :
+                                        </strong>
+                                        <?php echo $verify['nama'] ?>
+                                    </p>
+                                    <div class="port-heart">
+                                        <i class="ion-ios-calendar"></i> <strong> Tanggal event:
+                                        </strong> <?php echo date("Y-m-d", strtotime($verify['tanggal'])); ?>
+                                    </div> <!-- /.port-heart -->
+                                </div> <!-- /.portfolio-item-details -->
+                            </div> <!-- /.portfolio-item -->
+                        </div> <!-- /.col-md-4 -->
+                    <?php
+                    }
+                    ?>
                 <?php endforeach ?>
             </div> <!-- /.row -->
         <?php
@@ -110,8 +115,12 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
     </div> <!-- /.container -->
 </section> <!-- /.portfolio -->
 
-<a href="create-event">
-    <button class='btn btn-sub-bottomright green-btn'><i class="fa fa-plus"></i> Buat Event</button>
+<a href=<?php echo (session('nama') == "" ? "/login" : "create-event") ?>>
+    <button class='btn btn-sub-bottomright green-btn'><i class="fa fa-plus"></i>
+        <?php
+        echo (session('nama') == "" ? "Masuk untuk buat Event" : "Buat Event")
+        ?>
+    </button>
 </a>
 
 

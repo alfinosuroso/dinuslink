@@ -79,6 +79,7 @@ class AuthController extends BaseController
                 if ($dataUser) {
                     if (password_verify($password, $dataUser['password'])) {
                         session()->set([
+                            'nama' => $dataUser['nama'],
                             'nim' => $dataUser['nim'],
                             'role' => $dataUser['role'],
                             'isLoggedIn' => TRUE
@@ -104,6 +105,7 @@ class AuthController extends BaseController
                 if ($dataUser) {
                     if (password_verify($password, $dataUser['password'])) {
                         session()->set([
+                            'nama' => $dataUser['nama'],
                             'nim' => $dataUser['nim'],
                             'role' => $dataUser['role'],
                             'isLoggedIn' => TRUE

@@ -22,17 +22,23 @@
                     <li class=<?php echo (uri_string() == 'event') ? "active" : "" ?>><a href="/event">Event</a></li>
                     <li class=<?php echo (uri_string() == 'berita') ? "active" : "" ?>><a href="/berita">Berita</a></li>
                     <li class=<?php echo (uri_string() == 'komunitas') ? "active" : "" ?>><a href="/komunitas">Komunitas</a></li>
-                    <li class=<?php echo (uri_string() == 'profil') ? "active" : "" ?>><a href="/profil">Profil</a></li>
                     <?php
-                        // Asumsikan Anda memiliki fungsi atau variabel untuk mengecek status login
-                        // Misalnya, is_logged_in() atau $_SESSION['logged_in']
-                        if (session('isLoggedIn')=== true) {
-                            // Jika user sudah login
-                            echo '<li class="' . (uri_string() == 'logout' ? 'active' : '') . '"><a href="logout">Sign Out</a></li>';
-                        } else {
-                            // Jika user belum login
-                            echo '<li class="' . (uri_string() == 'login' ? 'active' : '') . '"><a href="login">Sign In</a></li>';
-                        }
+                    if (session('nama') != '') {
+                    ?>
+                        <li class=<?php echo (uri_string() == 'profil') ? "active" : "" ?>><a href="/profil">Halo, <?php echo session('nama'); ?></a></li>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    // Asumsikan Anda memiliki fungsi atau variabel untuk mengecek status login
+                    // Misalnya, is_logged_in() atau $_SESSION['logged_in']
+                    if (session('isLoggedIn') === true) {
+                        // Jika user sudah login
+                        echo '<li class="' . (uri_string() == 'logout' ? 'active' : '') . '"><a href="logout">Sign Out</a></li>';
+                    } else {
+                        // Jika user belum login
+                        echo '<li class="' . (uri_string() == 'login' ? 'active' : '') . '"><a href="login">Sign In</a></li>';
+                    }
                     ?>
                 </ul> <!-- /.nav -->
             </div><!-- /.navbar-collapse -->
