@@ -82,14 +82,14 @@ $routes->group('eventadm', ['filter' => 'authMhs'], function($routes){
 $routes->group('verifeventadm', function($routes){
     $routes->get('','VerifEventAdmController::index');
     $routes->post('create','VerifEventAdmController::create');
-    $routes->post('edit/(:any)', 'VerifEventAdmController::edit/$1');
-    $routes->get('delete/(:any)', 'VerifEventAdmController::delete/$1');
+    $routes->get('accept/(:any)', 'VerifEventAdmController::accept/$1');
+    $routes->get('reject/(:any)', 'VerifEventAdmController::reject/$1');
 });
 
-$routes->group('komunitas', ['filter' => 'authMhs'], ['filter' => 'auth'], function($routes){
+$routes->group('komunitasadm', ['filter' => 'authMhs'], ['filter' => 'auth'], function($routes){
 
-    $routes->get('','KomunitasController::index');
-    $routes->post('','KomunitasController::create');
-    $routes->post('edit/(:any)', 'KomunitasController::edit/$1');
-    $routes->get('delete/(:any)', 'KomunitasController::delete/$1');
+    $routes->get('','KomunitasAdmController::index');
+    $routes->post('','KomunitasAdmController::create');
+    $routes->post('edit/(:any)', 'KomunitasAdmController::edit/$1');
+    $routes->get('delete/(:any)', 'KomunitasAdmController::delete/$1');
 });

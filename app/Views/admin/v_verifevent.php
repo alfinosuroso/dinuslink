@@ -3,7 +3,7 @@
 <!-- Table with stripped rows -->
 <table class="table datatable">
     <br>
-    <h1>Daftar Event</h1>
+    <h1>Verifikasi Event</h1>
 
     <?php
 if (session()->getFlashData('success')) {
@@ -37,15 +37,15 @@ if (session()->getFlashData('failed')) {
             <th scope="col">Judul</th>
             <th scope="col">Deskripsi</th>
             <th scope="col">Tanggal</th>
+            <th scope="col">Gambar</th>
             <th scope="col">Proposal</th>
             <th scope="col">Status</th>
-            <th scope="col">Dibuat</th>
             <th scope="col">Di-update</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($event as $index => $item) : ?>
+        <?php foreach ($verifyEvent as $index => $item) : ?>
             <tr>
                 <th scope="row"><?php echo $index + 1 ?></th>
                 <td><?php echo $item['nama'] ?></td>
@@ -67,11 +67,11 @@ if (session()->getFlashData('failed')) {
                 <td><?php echo $item['created_at'] ?></td>
                 <td><?php echo $item['updated_at'] ?></td>
                 <td>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal-<?= $item['id'] ?>">
-                        Ubah
-                    </button>
-                    <a href="<?= base_url('verifeventadm/delete/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Yakin hapus data ini ?')">
-                        Hapus
+                    <a href="<?= base_url('verifeventadm/accept/' . $item['id']) ?>" class="btn btn-success" onclick="return confirm('Anda yakin untuk accept ini?')">
+                        Accept
+                    </a>
+                    <a href="<?= base_url('verifeventadm/reject/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Anda yakin untuk reject ini?')">
+                        Reject
                     </a>
                 </td>
             </tr>
