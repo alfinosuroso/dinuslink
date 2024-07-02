@@ -18,7 +18,7 @@ class User extends Migration
                 'constraint' => '100',
             ],
             'nim' => [
-                'type'       => 'INT',
+                'type'       => 'VARCHAR',
                 'constraint' => '12',
             ],
             'password' => [
@@ -28,14 +28,17 @@ class User extends Migration
             'prodi' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
+                'null'       => true,
             ],
             'minat' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
+                'null'       => true,
             ],
             'kontak' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '20',
+                'null'       => true,
             ],
             'role' => [
                 'type' => 'VARCHAR',

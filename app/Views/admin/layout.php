@@ -1,4 +1,4 @@
-<?php
+ <?php
 $hlm = "Home";
 if(uri_string()!=""){
   $hlm = ucwords(uri_string());

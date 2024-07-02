@@ -1,7 +1,5 @@
 <?php
 
-use function PHPUnit\Framework\isEmpty;
-
 $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime, doloribus nam sunt nostrum voluptatibus dolorem atque omnis consequuntur, commodi quod veritatis, libero ipsum optio tenetur ex quis! Necessitatibus voluptate ipsa repellat sit, obcaecati quisquam praesentium. Odio adipisci a sed commodi est obcaecati, non, cupiditate totam eos numquam explicabo soluta quod? Eligendi quae perspiciatis voluptate, dicta ratione repudiandae numquam quos reprehenderit vel neque quo dignissimos amet facilis labore. Facere ullam blanditiis perferendis, animi reiciendis, molestiae delectus harum laborum officiis tenetur, expedita recusandae perspiciatis assumenda iusto! Consequatur minima possimus adipisci, corporis, ex odit vitae nostrum animi asperiores enim officia voluptatibus corrupti.";
 ?>
 
@@ -15,6 +13,21 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
             Event
         </h2> <!-- /.section-title -->
         <div class="underline blue"></div>
+
+        <!-- Search Form -->
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="search">
+                    <form method="get" action="<?php echo base_url('event'); ?>">
+                        <i class="fa fa-search"></i>
+                        <input type="text" class="form-control" name="search" placeholder="Cari event.." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                        <button class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="row">
             <?php foreach ($events as $index => $event) : ?>
                 <div class="col-md-3">
@@ -24,7 +37,7 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
                                 <img src="<?php echo base_url() . "img-event/" . $event['gambar'] ?>" class="port-item">
                             <?php endif; ?>
                             <div class="portfolio-img-hover">
-                                <a href="#"><img src="<?php echo base_url() ?>Sight/assets/images/plus.png" alt="plus" class="plus"></a>
+                                <a href="<?php echo base_url('event/detail/' . $event['id']); ?>"><img src="<?php echo base_url() ?>Sight/assets/images/plus.png" alt="plus" class="plus"></a>
                             </div> <!-- /.portfolio-img-hover -->
                         </div> <!-- /.portfolio-img -->
                         <div class="portfolio-item-details">
@@ -33,10 +46,15 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
                                 <small><?php echo $event['deskripsi'] ?></small>
                             </div> <!-- /.portfolio-item-name-truncate -->
                             <p>
-                                Dibuat oleh : <?php echo $event['nama'] ?>
+                                <strong>
+                                    Dibuat oleh :
+                                </strong>
+                                <?php echo $event['nama'] ?>
                             </p>
                             <div class="port-heart">
-                                <i class="ion-ios-calendar"></i> Tanggal event: <?php echo $event['tanggal'] ?>
+                                <i class="ion-ios-calendar"></i> <strong> Tanggal event:
+                                </strong>
+                                <?php echo date("Y-m-d", strtotime($event['tanggal'])); ?>
                             </div> <!-- /.port-heart -->
                         </div> <!-- /.portfolio-item-details -->
                     </div> <!-- /.portfolio-item -->
@@ -72,10 +90,14 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
                                     <small><?php echo $verify['deskripsi'] ?></small>
                                 </div> <!-- /.portfolio-item-name-truncate -->
                                 <p>
-                                    Dibuat oleh : <?php echo $verify['nama'] ?>
+                                    <strong>
+                                        Dibuat oleh :
+                                    </strong>
+                                    <?php echo $event['nama'] ?>
                                 </p>
                                 <div class="port-heart">
-                                    <i class="ion-ios-calendar"></i> Tanggal event: <?php echo $verify['tanggal'] ?>
+                                    <i class="ion-ios-calendar"></i> <strong> Tanggal event:
+                                    </strong> <?php echo date("Y-m-d", strtotime($event['tanggal'])); ?>
                                 </div> <!-- /.port-heart -->
                             </div> <!-- /.portfolio-item-details -->
                         </div> <!-- /.portfolio-item -->
