@@ -18,20 +18,21 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class=<?php echo (uri_string() == '') ? "active" : "" ?>><a href=".">Beranda</a></li>
-                    <li class=<?php echo (uri_string() == 'partner') ? "active" : "" ?>><a href="partner">Partner</a></li>
-                    <li class=<?php echo (uri_string() == 'event') ? "active" : "" ?>><a href="event">Event</a></li>
-                    <li class=<?php echo (uri_string() == 'berita') ? "active" : "" ?>><a href="berita">Berita</a></li>
-                    <li class=<?php echo (uri_string() == 'profil') ? "active" : "" ?>><a href="profil">Profil</a></li>
+                    <li class=<?php echo (uri_string() == 'partner') ? "active" : "" ?>><a href="/partner">Partner</a></li>
+                    <li class=<?php echo (uri_string() == 'event') ? "active" : "" ?>><a href="/event">Event</a></li>
+                    <li class=<?php echo (uri_string() == 'berita') ? "active" : "" ?>><a href="/berita">Berita</a></li>
+                    <li class=<?php echo (uri_string() == 'komunitas') ? "active" : "" ?>><a href="/komunitas">Komunitas</a></li>
+                    <li class=<?php echo (uri_string() == 'profil') ? "active" : "" ?>><a href="/profil">Profil</a></li>
                     <?php
-                        // Asumsikan Anda memiliki fungsi atau variabel untuk mengecek status login
-                        // Misalnya, is_logged_in() atau $_SESSION['logged_in']
-                        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
-                            // Jika user sudah login
-                            echo '<li class="' . (uri_string() == 'logout' ? 'active' : '') . '"><a href="logout">Sign Out</a></li>';
-                        } else {
-                            // Jika user belum login
-                            echo '<li class="' . (uri_string() == 'login' ? 'active' : '') . '"><a href="login">Sign In</a></li>';
-                        }
+                    // Asumsikan Anda memiliki fungsi atau variabel untuk mengecek status login
+                    // Misalnya, is_logged_in() atau $_SESSION['logged_in']
+                    if (session('isLoggedIn')) {
+                        // Jika user sudah login
+                        echo '<li class="' . (uri_string() == 'logout' ? 'active' : '') . '"><a href="logout">Sign Out</a></li>';
+                    } else {
+                        // Jika user belum login
+                        echo '<li class="' . (uri_string() == 'login' ? 'active' : '') . '"><a href="login">Sign In</a></li>';
+                    }
                     ?>
                 </ul> <!-- /.nav -->
             </div><!-- /.navbar-collapse -->
@@ -81,7 +82,7 @@
         <section class="section-background">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li><a href="index-multipage.html">Beranda</a></li>
+                    <li><a href=".">Beranda</a></li>
                     <li class="active">&nbsp;Event</li>
                 </ol>
             </div> <!-- /.container -->
@@ -97,8 +98,24 @@
         <section class="section-background">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li><a href="index-multipage.html">Beranda</a></li>
+                    <li><a href=".">Beranda</a></li>
                     <li class="active">&nbsp;Berita</li>
+                </ol>
+            </div> <!-- /.container -->
+        </section> <!-- /.section-background -->
+    <?php
+    }
+    ?>
+
+    <!-- Check if its Komunitas -->
+    <?php
+    if (uri_string() == 'komunitas') {
+    ?>
+        <section class="section-background">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href=".">Beranda</a></li>
+                    <li class="active">&nbsp;Komunitas</li>
                 </ol>
             </div> <!-- /.container -->
         </section> <!-- /.section-background -->
@@ -113,7 +130,7 @@
         <section class="section-background">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li><a href="index-multipage.html">Beranda</a></li>
+                    <li><a href=".">Beranda</a></li>
                     <li class="active">&nbsp;Profil</li>
                 </ol>
             </div> <!-- /.container -->

@@ -4,58 +4,66 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:200,400,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
 
-body
-{
+body {
 	font-family: 'Roboto', 'Open-Sans', sans-serif;
 	overflow-x: hidden;
 	color: #313131;
 }
-.black{
+
+.black {
 	color: #313131;
 }
-.white{
-	background: #fff ;
+
+.white {
+	background: #fff;
 }
-.purple{
+
+.purple {
 	background: #4a148c;
 }
-.blue{
+
+.blue {
 	background: #1434A4;
 }
-.section-wrapper{
+
+.section-wrapper {
 	padding-top: 90px;
 	padding-bottom: 80px;
 }
-.section-title{
+
+.section-title {
 	font-size: 30px;
 	font-weight: 400;
 	text-transform: uppercase;
 	text-align: center;
 	letter-spacing: 2px;
 }
-.section-item-title{
+
+.section-item-title {
 	font-size: 20px;
 	font-weight: 400;
 	letter-spacing: 3px;
 	text-transform: uppercase;
 }
-.section-item-detail{
+
+.section-item-detail {
 	font-size: 14px;
-    font-weight: 300;
-    margin-bottom: 50px;
-    color: #999;
-    letter-spacing: .39px;
+	font-weight: 300;
+	margin-bottom: 50px;
+	color: #999;
+	letter-spacing: .39px;
 }
-.underline{
+
+.underline {
 	height: 2px;
 	width: 50px;
 	margin: 0px auto 60px;
 }
+
 /*=================================================
 ||				3. Header
 ==================================================*/
-.header
-{
+.header {
 	background: url('../images/multipage-header.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -66,8 +74,9 @@ body
 	text-transform: uppercase;
 
 }
-			/*navbar*/
-.navbar-default .navbar-brand{
+
+/*navbar*/
+.navbar-default .navbar-brand {
 	border: 1px solid #fff;
 	color: #fff;
 	font-size: 30px;
@@ -76,172 +85,210 @@ body
 	font-weight: 200;
 	letter-spacing: 5px;
 }
-.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
 	color: #fff;
 }
+
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #FFF;
+	background-color: #FFF;
 }
+
 .navbar-fixed-top .navbar-toggle .icon-bar {
-    background-color: #313131;
+	background-color: #313131;
 }
-.navbar-fixed-top .navbar-toggle{
+
+.navbar-fixed-top .navbar-toggle {
 	border-color: #313131;
 }
+
 .navbar-default {
-    background-color: transparent;
-    border-color: transparent;
-    padding-top: 50px;
+	background-color: transparent;
+	border-color: transparent;
+	padding-top: 50px;
 }
-.navbar-default .navbar-nav>li>a{
+
+.navbar-default .navbar-nav>li>a {
 	color: #fff;
-    /*text-transform: uppercase;*/
-    padding-right: 20px;
-    padding-left: 20px;
-    border: 1px solid transparent;
-    font-size: 12px;
-    font-weight: 300;
-    letter-spacing: 1px;
+	/*text-transform: uppercase;*/
+	padding-right: 20px;
+	padding-left: 20px;
+	border: 1px solid transparent;
+	font-size: 12px;
+	font-weight: 300;
+	letter-spacing: 1px;
 }
-.navbar-default .navbar-toggle{
+
+.navbar-default .navbar-toggle {
 	border-radius: 0px;
 }
-.navbar-default .navbar-nav>li>a:hover{
+
+.navbar-default .navbar-nav>li>a:hover {
 	border: 1px solid rgba(255, 255, 255, 0.6);
 	color: #fff;
 }
-.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
 	color: #fff;
 }
+
 .navbar-nav>li>a {
-    padding-top: 8px;
-    padding-bottom: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 }
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
 	background: transparent;
 }
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    color: #fff;
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+	background-color: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	color: #fff;
 }
-		/*Home*/
-.header-wrapper{
+
+/*Home*/
+.header-wrapper {
 	text-align: center;
 	display: table-cell;
 	vertical-align: middle;
 	position: relative;
 }
-.header-table{
+
+.header-table {
 	display: table;
 	height: 70vh;
 	width: 100%;
 }
-.header-title{
+
+.header-title {
 	font-size: 50px;
 	letter-spacing: 10px;
 	font-weight: 200;
 }
-.header-subtitle{
+
+.header-subtitle {
 	font-size: 20px;
 	letter-spacing: 3px;
 }
+
 /*=================================================
 ||				4. Our Service
 ==================================================*/
-.service{
+.service {
 	background: #ededed;
 	position: relative;
 }
-.service .section-title{
+
+.service .section-title {
 	margin-top: 110px;
 }
-.services{
+
+.services {
 	margin-bottom: 100px;
 }
-.service .underline{
+
+.service .underline {
 	margin-bottom: 75px;
 }
-.service-img{
+
+.service-img {
 	position: absolute;
 	bottom: 0px;
 }
 
-.twitter-feed{
+.twitter-feed {
 	color: #fff;
 }
-.item{
+
+.item {
 	text-align: center;
 }
-.owl-prev, .owl-next
-{
+
+.owl-prev,
+.owl-next {
 	position: absolute;
 	top: 10%;
 }
-.owl-next
-{
+
+.owl-next {
 	right: -10px;
 }
-.owl-prev
-{
+
+.owl-prev {
 	left: -10px;
 }
-.owl-prev:before
-{
-    /*content: "\f3d2";*/
-    /*font-family: 'ionicons';*/
-    content: url("../images/left.png");
+
+.owl-prev:before {
+	/*content: "\f3d2";*/
+	/*font-family: 'ionicons';*/
+	content: url("../images/left.png");
 }
-.owl-next:before
-{
-    /*content: "\f3d3";*/
-    /*font-family: "ionicons";*/
-    content: url("../images/right.png");
+
+.owl-next:before {
+	/*content: "\f3d3";*/
+	/*font-family: "ionicons";*/
+	content: url("../images/right.png");
 }
 
 /*=================================================
 ||				5. Twitter Feed
 ==================================================*/
-.day, .feed{
+.day,
+.feed {
 	font-size: 15px;
 	font-weight: 200;
 }
-.feed{
+
+.feed {
 	font-style: italic;
 	margin: 30px 0px;
 }
-.options a{
+
+.options a {
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 15px;
 	padding: 0px 20px;
 }
-.options a i{
+
+.options a i {
 	padding-right: 10px;
 }
-.options a:hover{
+
+.options a:hover {
 	text-decoration: none;
 }
-.item:hover{
+
+.item:hover {
 	cursor: w-resize;
 }
+
 /*=================================================
 ||				7. Portfolio
 ==================================================*/
-.porfolio{
+.porfolio {
 	background: #f9f9f9;
 }
-.portfolio-img{
+
+.portfolio-img {
 	position: relative;
 	overflow: hidden;
 	text-align: center;
 }
-.portfolio-img .port-item{
+
+.portfolio-img .port-item {
 	width: 100%;
 	height: auto;
 	transition: all .6s ease-in-out;
 }
-.portfolio-img:hover .portfolio-img-hover{
+
+.portfolio-img:hover .portfolio-img-hover {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -250,38 +297,46 @@ body
 	transition: all .6s ease-in-out;
 	background: rgba(0, 0, 0, 0.5);
 }
-.portfolio-img-hover{
 
-}
-.plus{
+.portfolio-img-hover {}
+
+.plus {
 	display: none;
 }
-.portfolio-img:hover .plus{
+
+.portfolio-img:hover .plus {
 	display: inline-block;
 	padding-top: 25%;
 }
-.portfolio-img:hover .port-item{
+
+.portfolio-img:hover .port-item {
 	transform: scale(1.1);
 }
-.portfolio-item-details{
-	margin: 20px 0px 80px; 
+
+.portfolio-item-details {
+	margin: 20px 0px 80px;
 }
-.portfolio-item-name-truncate{
+
+.portfolio-item-name-truncate {
 	display: inline-block;
 	font-size: 15px;
-	
+
 	overflow: hidden;
-   	text-overflow: ellipsis;
-   	display: -webkit-box;
-   	-webkit-line-clamp: 4; /* number of lines to show */
-           line-clamp: 4;
-   	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	/* number of lines to show */
+	line-clamp: 4;
+	-webkit-box-orient: vertical;
 }
-.port-heart, .portfolio-item-name-truncate small{
+
+.port-heart,
+.portfolio-item-name-truncate small {
 	font-size: 13px;
 	color: #969595;
 }
-.port-heart{
+
+.port-heart {
 	float: right;
 	display: inline-block;
 	margin-top: 10px;
@@ -291,16 +346,18 @@ body
 /*=================================================
 ||				8. Note
 ==================================================*/
-.note{
+.note {
 	color: #dadada;
 }
-.quote{
+
+.quote {
 	font-style: italic;
 	font-size: 16px;
 	font-weight: 200;
 	padding: 0px 145px;
 }
-.quoter{
+
+.quoter {
 	font-size: 20px;
 	font-weight: 400;
 	margin-top: 20px;
@@ -309,55 +366,65 @@ body
 /*=================================================
 ||				9. Fun Facts
 ==================================================*/
-.fun{
+.fun {
 	background: #f3f3f3;
 }
-.fun-box{
+
+.fun-box {
 	border: 2px solid #313131;
 	text-align: center;
 	padding: 40px 0px;
 	font-size: ;
 }
-.number{
+
+.number {
 	font-weight: 700;
 	font-size: 25px;
 }
-.number-title{
+
+.number-title {
 	text-transform: uppercase;
 	font-size: 20px;
 	font-weight: 400;
 }
-.col-sm-6 .fun-box{
+
+.col-sm-6 .fun-box {
 	margin-bottom: 20px;
 }
+
 /*=================================================
 ||				10. Footer
 ==================================================*/
-footer{
+footer {
 	background: #eaeaea;
 	padding: 20px 0px;
 }
-.copy{
+
+.copy {
 	font-size: 14px;
 	font-weight: 300;
 	color: #929292;
 	padding: 10px 0px;
 	display: inline-block;
 }
-.fb{
+
+.fb {
 	background: #1976d2;
 }
-.twitter{
+
+.twitter {
 	background: #2CAAE1;
 }
-.google{
+
+.google {
 	background: #c62828;
 }
-.rss{
+
+.rss {
 	background: #ff8f00;
 }
 
-.icon{
+.icon {
 	height: 40px;
 	width: 40px;
 	text-align: center;
@@ -366,28 +433,34 @@ footer{
 	border: 1px solid transparent;
 	font-size: 18px;
 }
-a .icon{
+
+a .icon {
 	color: #dadada;
 }
+
 /*.social-icon{
 	float: right;
 }*/
-a .icon:hover{
+a .icon:hover {
 	background: transparent;
 }
-a .fb:hover{
+
+a .fb:hover {
 	color: #1976d2;
 	border-color: #1976d2;
 }
-a .twitter:hover{
+
+a .twitter:hover {
 	color: #2CAAE1;
 	border-color: #2CAAE1;
 }
-a .google:hover{
+
+a .google:hover {
 	color: #c62828;
 	border-color: #c62828;
 }
-a .rss:hover{
+
+a .rss:hover {
 	color: #ff8f00;
 	border-color: #ff8f00;
 }
@@ -396,104 +469,160 @@ a .rss:hover{
 ||				11. Others
 ==================================================*/
 /*Testimonial*/
-.testimonial{
+.testimonial {
 	background: url('../images/testimonial.png');
 	color: #fff;
 }
-.testimonial .section-title{
+
+.testimonial .section-title {
 	color: #fff;
 }
-.testimonial-detail{
+
+.testimonial-detail {
 	font-style: italic;
 	font-size: 15px;
 	font-weight: 200;
 	margin-bottom: 50px;
 }
+
 .test-name {
-    margin-bottom: 40px;
+	margin-bottom: 40px;
 }
+
 /*Owl carousel*/
-.owl-theme .owl-controls .owl-nav [class*=owl-]{
+.owl-theme .owl-controls .owl-nav [class*=owl-] {
 	background: transparent;
 }
-.owl-theme .owl-dots .owl-dot span{
+
+.owl-theme .owl-dots .owl-dot span {
 	width: 20px;
 	height: 8px;
 	border-radius: 0px;
 	background: transparent;
 	border: 1px solid #fff;
 }
-.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
 	background: #fff;
 }
-.owl-theme .owl-controls .owl-nav [class*=owl-]:hover{
+
+.owl-theme .owl-controls .owl-nav [class*=owl-]:hover {
 	background: transparent;
 }
+
 /*Add*/
-.add .owl-prev:before
-{
-    content: url("../images/bleft.png");
+.add .owl-prev:before {
+	content: url("../images/bleft.png");
 }
-.add .owl-next:before
-{
-    content: url("../images/bright.png");
+
+.add .owl-next:before {
+	content: url("../images/bright.png");
 }
-.owl-next
-{
+
+.owl-next {
 	right: -90px;
 }
-.owl-prev
-{
+
+.owl-prev {
 	left: -90px;
 }
-.add .owl-prev, .add .owl-next
-{
+
+.add .owl-prev,
+.add .owl-next {
 	top: 25%;
 }
-.add-item{
+
+.add-item {
 	padding: 20px;
 }
-@media (max-width: 960px){
-	.nav>li{
+
+@media (max-width: 960px) {
+	.nav>li {
 		text-align: center;
 	}
-	.service-img{
+
+	.service-img {
 		opacity: .2;
 	}
-	.fun-box{
+
+	.fun-box {
 		margin: 15px;
 	}
-	.quote{
+
+	.quote {
 		padding: 0 50px;
 	}
-	.portfolio .portfolio-item{
+
+	.portfolio .portfolio-item {
 		margin: 15px;
 	}
-	.price-title, .price-list{
+
+	.price-title,
+	.price-list {
 		text-align: center;
 	}
-	.options a{
+
+	.options a {
 		padding: 0 5px;
 	}
-	footer{
+
+	footer {
 		text-align: center;
 	}
-	footer .text-right{
+
+	footer .text-right {
 		text-align: center;
 	}
-	.navbar-default .navbar-brand{
+
+	.navbar-default .navbar-brand {
 		margin-left: 15px;
 	}
-		img.about-img {
-	    width: 100%;
-	    padding: 15px 15px 0px;
+
+	img.about-img {
+		width: 100%;
+		padding: 15px 15px 0px;
 	}
-	.quote{
+
+	.quote {
 		padding: 0 15px;
 	}
-} 
-@media (max-width: 480px){
-	.header-table{
+}
+
+@media (max-width: 480px) {
+	.header-table {
 		max-height: 627px;
 	}
+}
+
+
+/* Tambah styling */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+.search {
+	position: relative;
+	box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+}
+.search input {
+	height: 50px;
+	text-indent: 25px;
+	border: 2px solid #d6d4d4;
+}
+.search input:focus {
+	box-shadow: none;
+	border: 2px solid #1434A4;
+}
+
+.search .fa-search {
+	position: absolute;
+	top: 20px;
+	left: 16px;
+}
+.search button {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	height: 40px;
+	width: 110px;
+	background: #1434A4;
 }
