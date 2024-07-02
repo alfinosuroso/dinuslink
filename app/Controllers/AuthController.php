@@ -67,10 +67,35 @@ class AuthController extends BaseController
         if ($this->request->getPost()) {
             $rules = [
                 'nim' => 'required|min_length[12]',
-                'password' => 'required|min_length[7]|numeric',
+                'password' => 'required|min_length[7]',
             ];
 
-            if ($this->validate($rules)) {
+            if ($this->request->getVar('nim') == 'admin') {
+                 $nim = $this->request->getVar('nim');
+                $password = $this->request->getVar('password');
+
+                $dataUser = $this->users->where(['nim' => $nim])->first(); //pasw 1234567
+
+                if ($dataUser) {
+                    if (password_verify($password, $dataUser['password'])) {
+                        session()->set([
+                            'nim' => $dataUser['nim'],
+                            'role' => $dataUser['role'],
+                            'isLoggedIn' => TRUE
+                        ]);
+
+                        return redirect()->to(base_url('/'));
+                    } else {
+                        session()->setFlashdata('failed', 'Kombinasi nim & Password Salah');
+                        return redirect()->back();
+                    }
+                } else {
+                    session()->setFlashdata('failed', 'nim Tidak Ditemukan');
+                    return redirect()->back();
+                }
+            }
+
+            else if ($this->validate($rules)) {
                 $nim = $this->request->getVar('nim');
                 $password = $this->request->getVar('password');
 
@@ -110,11 +135,11 @@ class AuthController extends BaseController
             $rules = [
                 'nama' => 'required|min_length[3]|max_length[100]',
                 // 'nim' => 'required|min_length[12]|max_length[100]',
-                'nim' => 'required|exact_length[12]|regex_match[/^A11\d{9}$/]|is_unique[users.nim]',    
+                'nim' => 'required|exact_length[12]|regex_match[/^[A-Z]\d{11}$/]|is_unique[users.nim]',    
                 'password' => 'required|min_length[7]',
-                'prodi' => 'required|in_list[teknik-informatika,sistem-informasi]',
-                'minat' => 'required|in_list[mobile,web,ai]',
-                'kontak' => 'required|regex_match[/^08\d{8,11}$/]'
+                // 'prodi' => 'required|in_list[teknik-informatika,sistem-informasi]',
+                // 'minat' => 'required|in_list[mobile,web,ai]',
+                // 'kontak' => 'required|regex_match[/^08\d{8,11}$/]'
             ];
 
             if ($this->validate($rules)) {
@@ -122,9 +147,9 @@ class AuthController extends BaseController
                     'nama' => $this->request->getVar('nama'),
                     'nim' => $this->request->getVar('nim'),
                     'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                    'prodi' => $this->request->getVar('prodi'),
-                    'minat' => $this->request->getVar('minat'),
-                    'kontak' => $this->request->getVar('kontak'),
+                    // 'prodi' => $this->request->getVar('prodi'),
+                    // 'minat' => $this->request->getVar('minat'),
+                    // 'kontak' => $this->request->getVar('kontak'),
                     'role' => 'mahasiswa',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),

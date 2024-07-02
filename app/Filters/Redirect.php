@@ -49,7 +49,7 @@ class Redirect implements FilterInterface
         if (session()->has('isLoggedIn')) {
             $role = session()->get('role');
             if ($role === 'admin') {
-                return redirect()->to(site_url('/event'));
+                return redirect()->to(site_url('/admin'));
             } else if ($role === 'mahasiswa') {
                 return redirect()->to(site_url('/'));
             }
