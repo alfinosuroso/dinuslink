@@ -78,7 +78,7 @@ $routes->group('eventadm', ['filter' => 'authMhs'], function($routes){
     $routes->get('delete/(:any)', 'EventAdmController::delete/$1');
 });
 
-<<<<<<< verifevent
+
 $routes->group('verifeventadm', function($routes){
     $routes->get('','VerifEventAdmController::index');
     $routes->post('create','VerifEventAdmController::create');
@@ -86,10 +86,8 @@ $routes->group('verifeventadm', function($routes){
     $routes->get('delete/(:any)', 'VerifEventAdmController::delete/$1');
 });
 
-$routes->group('komunitas', ['filter' => 'auth'], function($routes){
-=======
 $routes->group('komunitas', ['filter' => 'authMhs'], ['filter' => 'auth'], function($routes){
->>>>>>> master
+
     $routes->get('','KomunitasController::index');
     $routes->post('','KomunitasController::create');
     $routes->post('edit/(:any)', 'KomunitasController::edit/$1');
