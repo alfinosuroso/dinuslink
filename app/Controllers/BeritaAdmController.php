@@ -27,11 +27,9 @@ class BeritaAdmController extends BaseController
 
         $dataForm = [
             'judul_berita' => $this->request->getPost('judul_berita'),
-            'penulis' => $this->request->getPost('penulis'),
+            'isi_berita' => $this->request->getPost('isi_berita'),
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
-            'kategori' => $this->request->getPost('kategori'),
-            'status' => $this->request->getPost('status')
         ];
 
         if ($dataGmbrNews && $dataGmbrNews->isValid() && !$dataGmbrNews->hasMoved()) {
@@ -51,10 +49,8 @@ class BeritaAdmController extends BaseController
 
         $dataForm = [
             'judul_berita' => $this->request->getPost('judul_berita'),
-            'penulis' => $this->request->getPost('penulis'),
+            'isi_berita' => $this->request->getPost('isi_berita'),
             'updated_at' => date("Y-m-d H:i:s"),
-            'kategori' => $this->request->getPost('kategori'),
-            'status' => $this->request->getPost('status')
         ];
 
         if ($this->request->getPost('check') == 1) {

@@ -4,36 +4,23 @@
 <br>
 <h1>Daftar Berita</h1>
 
-<?php
-if (session()->getFlashData('success')) {
-?>
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-        <?= session()->getFlashData('success') ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php
-}
-?>
-<?php
-if (session()->getFlashData('failed')) {
-?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?= session()->getFlashData('failed') ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php
-}
-?>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-    Tambah Data
-</button>
-
 <?php if (session()->getFlashData('success')) : ?>
     <div class="alert alert-info alert-dismissible fade show" role="alert">
         <?= session()->getFlashData('success') ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-<?php endif ?>
+<?php endif; ?>
+
+<?php if (session()->getFlashData('failed')) : ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?= session()->getFlashData('failed') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+    Tambah Data
+</button>
 
 <table class="table datatable">
     <thead>
@@ -42,6 +29,8 @@ if (session()->getFlashData('failed')) {
             <th>Judul Berita</th>
             <th>Isi Berita</th>
             <th>Gambar Berita</th>
+            <th>Dibuat</th>
+            <th>Di-update</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -53,7 +42,7 @@ if (session()->getFlashData('failed')) {
                 <td><?= $item['isi_berita'] ?></td>
                 <td>
                     <?php if ($item['gambar_berita'] && file_exists("img/" . $item['gambar_berita'])) : ?>
-                        <img src="<?= base_url() . "img/" . $item['gambar_berita'] ?>" width="100px">
+                        <img src="<?= base_url("img/" . $item['gambar_berita']) ?>" width="100px">
                     <?php endif; ?>
                 </td>
                 <td><?= $item['created_at'] ?></td>
@@ -84,7 +73,7 @@ if (session()->getFlashData('failed')) {
                                     <input type="text" name="judul_berita" class="form-control" id="judul_berita" value="<?= $item['judul_berita'] ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="isi_berita">Isi berita</label>
+                                    <label for="isi_berita">Isi Berita</label>
                                     <input type="text" name="isi_berita" class="form-control" id="isi_berita" value="<?= $item['isi_berita'] ?>" required>
                                 </div>
                                 <div class="form-group">
@@ -96,6 +85,7 @@ if (session()->getFlashData('failed')) {
                                     <input class="form-check-input" type="checkbox" id="check" name="check" value="1">
                                     <label class="form-check-label" for="check">Ceklis jika ingin mengganti foto</label>
                                 </div>
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
@@ -104,7 +94,7 @@ if (session()->getFlashData('failed')) {
                     </div>
                 </div>
             </div>
-        <?php endforeach ?>
+        <?php endforeach; ?>
     </tbody>
 </table>
 
@@ -124,13 +114,12 @@ if (session()->getFlashData('failed')) {
                         <input type="text" name="judul_berita" class="form-control" id="judul_berita" required>
                     </div>
                     <div class="form-group">
-                        <label for="isi_berita">Isi berita</label>
+                        <label for="isi_berita">Isi Berita</label>
                         <input type="text" name="isi_berita" class="form-control" id="isi_berita" required>
                     </div>
                     <div class="form-group">
                         <label for="gambar_berita">Gambar Berita</label>
                         <input type="file" class="form-control" id="gambar_berita" name="gambar_berita">
-                    </div>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -33,10 +33,12 @@ if (session()->getFlashData('failed')) {
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nama</th>
+            <th scope="col">NIM</th>
             <th scope="col">Judul</th>
             <th scope="col">Deskripsi</th>
             <th scope="col">Tanggal</th>
-            <th scope="col">Gambar</th>
+            <th scope="col">Proposal</th>
+            <th scope="col">Status</th>
             <th scope="col">Dibuat</th>
             <th scope="col">Di-update</th>
             <th scope="col">Aksi</th>
@@ -47,6 +49,7 @@ if (session()->getFlashData('failed')) {
             <tr>
                 <th scope="row"><?php echo $index + 1 ?></th>
                 <td><?php echo $item['nama'] ?></td>
+                <td><?php echo $item['nim'] ?></td>
                 <td><?php echo $item['judul'] ?></td>
                 <td><?php echo $item['deskripsi'] ?></td>
                 <td><?php echo $item['tanggal'] ?></td>
@@ -55,13 +58,19 @@ if (session()->getFlashData('failed')) {
                         <img src="<?php echo base_url() . "img-event/" . $item['gambar'] ?>" width="100px">
                     <?php endif; ?>
                 </td>
+                <td>
+                    <?php if ($item['proposal'] != '' && file_exists("img-event/" . $item['proposal'])) : ?>
+                        <img src="<?php echo base_url() . "img-event/" . $item['proposal'] ?>" width="100px">
+                    <?php endif; ?>
+                </td>
+                <td><?php echo $item['status'] ?></td>
                 <td><?php echo $item['created_at'] ?></td>
                 <td><?php echo $item['updated_at'] ?></td>
                 <td>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal-<?= $item['id'] ?>">
                         Ubah
                     </button>
-                    <a href="<?= base_url('eventadm/delete/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Yakin hapus data ini ?')">
+                    <a href="<?= base_url('verifeventadm/delete/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Yakin hapus data ini ?')">
                         Hapus
                     </a>
                 </td>
@@ -74,12 +83,16 @@ if (session()->getFlashData('failed')) {
                             <h5 class="modal-title">Edit Data</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="<?= base_url('eventadm/edit/' . $item['id']) ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('verifeventadm/edit/' . $item['id']) ?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
                                     <input type="text" name="nama" class="form-control" id="nama" value="<?= $item['nama'] ?>" placeholder="Nama" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nim">NIM</label>
+                                    <input type="text" name="nim" class="form-control" id="nim" value="<?= $item['nim'] ?>" placeholder="Nim" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="judul">Judul</label>
@@ -103,6 +116,21 @@ if (session()->getFlashData('failed')) {
                                     <label class="form-check-label" for="check">
                                         Ceklis jika ingin mengganti foto
                                     </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gambar">Proposal</label>
+                                    <input type="file" class="form-control" id="gambar" name="gambar">
+                                    <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check" name="check" value="1">
+                                    <label class="form-check-label" for="check">
+                                        Ceklis jika ingin mengganti foto
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <input type="text" name="status" class="form-control" id="status" value="<?= $item['status'] ?>" placeholder="Status" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="created_at">Dibuat</label>
@@ -149,31 +177,43 @@ if (session()->getFlashData('failed')) {
                 <h5 class="modal-title">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('eventadm/create') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('verifeventadm/create') ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" name="nama" class="form-control" id="nama" value="<?= $item['nama'] ?>" placeholder="Nama" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="judul">Judul</label>
-                        <input type="text" name="judul" class="form-control" id="judul" value="<?= $item['judul'] ?>" placeholder="Judul" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="deskripsi">Deskripsi</label>
-                        <input type="text" name="deskripsi" class="form-control" id="deskripsi" value="<?= $item['deskripsi'] ?>" placeholder="Deskripsi" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="gambar">Gambar</label>
-                        <input type="file" class="form-control" id="gambar" name="gambar">
-                        <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggal">Tanggal</label>
-                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $item['tanggal'] ?>" required>
-                    </div>
-                </div>
+                <div class="form-group">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" name="nama" class="form-control" id="nama" value="<?= $item['nama'] ?>" placeholder="Nama" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nim">NIM</label>
+                                    <input type="text" name="nim" class="form-control" id="nim" value="<?= $item['nim'] ?>" placeholder="Nim" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="judul">Judul</label>
+                                    <input type="text" name="judul" class="form-control" id="judul" value="<?= $item['judul'] ?>" placeholder="Judul" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="deskripsi">Deskripsi</label>
+                                    <input type="text" name="deskripsi" class="form-control" id="deskripsi" value="<?= $item['deskripsi'] ?>" placeholder="Deskripsi" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tanggal">Tanggal</label>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $item['tanggal'] ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gambar">Gambar</label>
+                                    <input type="file" class="form-control" id="gambar" name="gambar">
+                                    <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gambar">Proposal</label>
+                                    <input type="file" class="form-control" id="gambar" name="gambar">
+                                    <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <input type="text" name="status" class="form-control" id="status" value="<?= $item['status'] ?>" placeholder="Status" required>
+                                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>

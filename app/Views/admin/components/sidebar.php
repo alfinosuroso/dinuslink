@@ -25,6 +25,13 @@
         </li><!-- End Event Nav -->
 
         <li class="nav-item">
+            <a class="nav-link <?php echo (uri_string() == 'verifeventadm') ? "" : "collapsed" ?>" href="verifeventadm">
+                <i class="bi bi-check-lg"></i>
+                <span>Verifikasi Event</span>
+            </a>
+        </li><!-- End Verifikasi Event Nav -->
+
+        <li class="nav-item">
             <a class="nav-link <?php echo (uri_string() == 'komunitasadm') ? "" : "collapsed" ?>" href="komunitasadm">
                 <i class="bi-chat-quote"></i>
                 <span>Komunitas</span>
