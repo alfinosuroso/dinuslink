@@ -21,17 +21,6 @@ class VerificationSeeder extends Seeder
                 'status' => 'PENDING',
                 'created_at' => date("Y-m-d H:i:s"),
             ],
-            [
-                'nama' => 'Admin',
-                'nim' => 'Admin',
-                'judul' => 'Lomba Siaran Radio',
-                'deskripsi' => '🔊🔊RADIO SWARA DIAN FAKULTAS TEKNIK UDINUS Proudly Present "Lomba siaran radio" Untuk SMA/SMK & Mahasiswa se provinsi Jawa Tengah. Ayo bergabung, dan menangkan total hadiah jutaan rupiah. 💲💲 Syarat dan ketentuan -peserta adalah pelajar SMA Sederajat & mahasiswa aktif se provinsi Jawa Tengah - 1 team terdiri dari 2 orang - peserta bukan penyiar radio swasta Pelaksanaan 📆30 & 31 januari 2019 📍Udinus Registrasi 📅Paling lambat 25januari 2019 🖥Daftar online di festival.dinus.ac.id Fasilitas Snack Makan Sertifikat Info 📱niken 085368187437',
-                'tanggal' => date("Y-m-d H:i:s"),
-                'gambar' => 'radio.png',
-                'proposal' => 'radio.png',
-                'status' => 'SUCCESS',
-                'created_at' => date("Y-m-d H:i:s"),
-            ],
         ];
 
         foreach ($data as $item) {

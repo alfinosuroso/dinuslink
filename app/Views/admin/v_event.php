@@ -167,7 +167,6 @@ if (session()->getFlashData('failed')) {
                     <div class="form-group">
                         <label for="gambar">Gambar</label>
                         <input type="file" class="form-control" id="gambar" name="gambar">
-                        <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
                     </div>
                     <div class="form-group">
                         <label for="tanggal">Tanggal</label>

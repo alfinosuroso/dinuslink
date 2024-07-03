@@ -82,7 +82,7 @@ $routes->group('eventadm', ['filter' => 'authMhs'], function($routes){
 $routes->group('verifeventadm', function($routes){
     $routes->get('','VerifEventAdmController::index');
     $routes->post('create','VerifEventAdmController::create');
-    $routes->get('accept/(:any)', 'VerifEventAdmController::accept/$1');
+    $routes->post('accept', 'VerifEventAdmController::accept');
     $routes->get('reject/(:any)', 'VerifEventAdmController::reject/$1');
 });
 
