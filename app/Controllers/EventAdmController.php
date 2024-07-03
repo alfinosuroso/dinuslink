@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\EventModel;
+use Exception;
 
 class EventAdmController extends BaseController
 {
@@ -24,26 +25,32 @@ class EventAdmController extends BaseController
 
     public function create()
     {
-        $dataGmbrEvent = $this->request->getFile('gambar');
+        try {
+            $dataGmbrEvent = $this->request->getFile('gambar');
 
-        $dataForm = [
-            'nama' => $this->request->getPost('nama'), // Ganti 'judul' menjadi 'judul_event'
-            'judul' => $this->request->getPost('judul'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'tanggal' => date("Y-m-d H:i:s"),
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ];
+            $dataForm = [
+                'nama' => $this->request->getPost('nama'), // Ganti 'judul' menjadi 'judul_event'
+                'nim' => session('nim'),
+                'judul' => $this->request->getPost('judul'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+                'tanggal' => $this->request->getPost('tanggal'),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ];
 
-        if ($dataGmbrEvent->isValid()) {
-            $fileName = $dataGmbrEvent->getRandomName();
-            $dataForm['gambar'] = $fileName;
-            $dataGmbrEvent->move('img-event/', $fileName);
+            if ($dataGmbrEvent->isValid() && !$dataGmbrEvent->hasMoved()) {
+                $fileName = $dataGmbrEvent->getRandomName();
+                $dataForm['gambar'] = $fileName;
+                $dataGmbrEvent->move('img-event/', $fileName);
+            }
+
+            $this->event->insert($dataForm); // Ganti $this->event menjadi $this->lomba
+
+            return redirect()->to('eventadm')->with('success', 'Data Berhasil Ditambah');
+        } catch (Exception $e) {
+            //alert the user.
+            var_dump($e->getMessage());
         }
-
-        $this->event->insert($dataForm); // Ganti $this->event menjadi $this->lomba
-
-        return redirect()->to('eventadm')->with('success', 'Data Berhasil Ditambah');
     }
 
     public function edit($id)
@@ -54,7 +61,7 @@ class EventAdmController extends BaseController
             'nama' => $this->request->getPost('nama'), // Ganti 'judul' menjadi 'judul_event'
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'tanggal' => date("Y-m-d H:i:s"),
+            'tanggal' => $this->request->getPost('tanggal'),
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ];

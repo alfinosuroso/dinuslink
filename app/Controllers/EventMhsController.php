@@ -49,8 +49,8 @@ class EventMhsController extends BaseController
 
             $dataForm = [
                 // 'nama' => $this->request->getPost('nama'),
-                'nama' => session('nama'), // dummy
-                'nim' => "A11203415453", // dummy
+                'nama' => session('nama'), 
+                'nim' => session('nim'), 
                 'judul' => $this->request->getPost('judul'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
                 'status' => "PENDING",

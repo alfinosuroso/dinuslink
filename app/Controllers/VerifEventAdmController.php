@@ -4,10 +4,12 @@ namespace App\Controllers;
 
 use App\Models\EventModel;
 use App\Models\VerificationEventModel;
+use Exception;
 
 class VerifEventAdmController extends BaseController
 {
     protected $verifyEvent;
+    protected $event;
 
     function __construct()
     {
@@ -22,42 +24,47 @@ class VerifEventAdmController extends BaseController
         return view('/admin/v_verifevent', $data);
     }
 
-    public function accept($id)
+    public function accept()
     {
-        $dataEvent = $this->verifyEvent->find($id); // Ganti $this->lomba menjadi $this->event
+        $id = $this->request->getPost('id');
+        try {
+            $dataVerifyEvent = $this->verifyEvent->find($id);
 
-        $dataFormVerify = [
-            'status' => 'ACCEPT' // Ganti 'judul' menjadi 'judul_event'
-        ];
+            // Mengubah status pada Verifikasi Event menjadi Accept
+            $dataFormVerify = [
+                'status' => 'ACCEPT'
+            ];
 
-        $dataGmbrEvent = $this->request->getFile('gambar');
-        var_dump($dataEvent);
+            // Menambah data pada Event yang diaccept
+            $dataGmbrEvent = $dataVerifyEvent['gambar'];
 
-        $dataFormEvent = [
-            'nama' => $this->request->getPost('nama'), // Ganti 'judul' menjadi 'judul_event'
-            'judul' => $this->request->getPost('judul'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'tanggal' => date("Y-m-d H:i:s"),
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
-        ];
+            $dataFormEvent = [
+                'nama' => $dataVerifyEvent['nama'],
+                'nim' => $dataVerifyEvent['nim'],
+                'judul' => $dataVerifyEvent['judul'],
+                'deskripsi' => $dataVerifyEvent['deskripsi'],
+                'tanggal' => $dataVerifyEvent['tanggal'],
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ];
 
-        /* if ($dataGmbrEvent->isValid()) {
-            $fileName = $dataGmbrEvent->getRandomName();
-            $dataFormEvent['gambar'] = $fileName;
-            $dataGmbrEvent->move('img-event/', $fileName);
-        } */
+            $dataFormEvent['gambar'] = $dataGmbrEvent;
 
-        $this->event->insert($dataFormEvent); // Ganti $this->event menjadi $this->lomba
-        $this->verifyEvent->update($id, $dataFormVerify); // Ganti $this->product menjadi $this->lomba
+            // Tambah data pada tabel Event
+            $this->event->insert($dataFormEvent);
 
-        return redirect()->to('verifeventadm')->with('success', 'Data Berhasil Diubah');
+            // Update data pada tabel verifikasi event
+            $this->verifyEvent->update($id, $dataFormVerify);
+
+            return redirect()->to('verifeventadm')->with('success', 'Data Berhasil Diubah, Event berhasil ditambahkan');
+        } catch (Exception $e) {
+            //alert the user.
+            var_dump($e->getMessage());
+        }
     }
 
     public function reject($id)
     {
-        $dataEvent = $this->verifyEvent->find($id); // Ganti $this->lomba menjadi $this->event
-
         $dataForm = [
             'status' => 'REJECT' // Ganti 'judul' menjadi 'judul_event'
         ];

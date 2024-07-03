@@ -32,7 +32,7 @@
         </li><!-- End Verifikasi Event Nav -->
 
         <li class="nav-item">
-            <a class="nav-link <?php echo (uri_string() == 'komunitasadm') ? "" : "collapsed" ?>" href="komunitasadm">
+            <a class="nav-link <?php echo (uri_string() == 'komunitasadm') ? "" : "collapsed" ?>" href="#">
                 <i class="bi-chat-quote"></i>
                 <span>Komunitas</span>
             </a>

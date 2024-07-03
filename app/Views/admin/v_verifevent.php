@@ -6,28 +6,25 @@
     <h1>Verifikasi Event</h1>
 
     <?php
-if (session()->getFlashData('success')) {
-?>
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-        <?= session()->getFlashData('success') ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php
-}
-?>
-<?php
-if (session()->getFlashData('failed')) {
-?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?= session()->getFlashData('failed') ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php
-}
-?>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-    Tambah Data
-</button>
+    if (session()->getFlashData('success')) {
+    ?>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <?= session()->getFlashData('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+    ?>
+    <?php
+    if (session()->getFlashData('failed')) {
+    ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashData('failed') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+    ?>
 
     <thead>
         <tr>
@@ -67,12 +64,30 @@ if (session()->getFlashData('failed')) {
                 <td><?php echo $item['created_at'] ?></td>
                 <td><?php echo $item['updated_at'] ?></td>
                 <td>
-                    <a href="<?= base_url('verifeventadm/accept/' . $item['id']) ?>" class="btn btn-success" onclick="return confirm('Anda yakin untuk accept ini?')">
-                        Accept
-                    </a>
-                    <a href="<?= base_url('verifeventadm/reject/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Anda yakin untuk reject ini?')">
-                        Reject
-                    </a>
+                    <?php
+                    if ($item['status'] != "ACCEPT") {
+                    ?>
+                        <form action="<?= base_url('verifeventadm/accept') ?>" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                            <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin untuk accept ini?')">Accept</button>
+                        </form>
+
+                        <?php
+                        if ($item['status'] != "REJECT") {
+                        ?>
+                            <a href="<?= base_url('verifeventadm/reject/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Anda yakin untuk reject ini?')">
+                                Reject
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    <?php
+                    } else if ($item['status'] == "ACCEPT") {
+                    ?>
+                        <p>Anda sudah Accept event ini</p>
+                    <?php
+                    }
+                    ?>
                 </td>
             </tr>
             <!-- Edit Modal Begin -->
@@ -180,44 +195,44 @@ if (session()->getFlashData('failed')) {
             <form action="<?= base_url('verifeventadm/create') ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
-                <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" name="nama" class="form-control" id="nama" value="<?= $item['nama'] ?>" placeholder="Nama" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nim">NIM</label>
-                                    <input type="text" name="nim" class="form-control" id="nim" value="<?= $item['nim'] ?>" placeholder="Nim" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="judul">Judul</label>
-                                    <input type="text" name="judul" class="form-control" id="judul" value="<?= $item['judul'] ?>" placeholder="Judul" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="deskripsi">Deskripsi</label>
-                                    <input type="text" name="deskripsi" class="form-control" id="deskripsi" value="<?= $item['deskripsi'] ?>" placeholder="Deskripsi" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tanggal">Tanggal</label>
-                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $item['tanggal'] ?>" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="gambar">Gambar</label>
-                                    <input type="file" class="form-control" id="gambar" name="gambar">
-                                    <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
-                                </div>
-                                <div class="form-group">
-                                    <label for="gambar">Proposal</label>
-                                    <input type="file" class="form-control" id="gambar" name="gambar">
-                                    <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
-                                </div>
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <input type="text" name="status" class="form-control" id="status" value="<?= $item['status'] ?>" placeholder="Status" required>
-                                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" name="nama" class="form-control" id="nama" value="<?= $item['nama'] ?>" placeholder="Nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nim">NIM</label>
+                        <input type="text" name="nim" class="form-control" id="nim" value="<?= $item['nim'] ?>" placeholder="Nim" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="judul">Judul</label>
+                        <input type="text" name="judul" class="form-control" id="judul" value="<?= $item['judul'] ?>" placeholder="Judul" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi</label>
+                        <input type="text" name="deskripsi" class="form-control" id="deskripsi" value="<?= $item['deskripsi'] ?>" placeholder="Deskripsi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $item['tanggal'] ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gambar">Gambar</label>
+                        <input type="file" class="form-control" id="gambar" name="gambar">
+                        <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
+                    </div>
+                    <div class="form-group">
+                        <label for="gambar">Proposal</label>
+                        <input type="file" class="form-control" id="gambar" name="gambar">
+                        <img src="<?= base_url('img-event/' . $item['gambar']) ?>" width="100px">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <input type="text" name="status" class="form-control" id="status" value="<?= $item['status'] ?>" placeholder="Status" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
             </form>
         </div>
     </div>
