@@ -119,7 +119,7 @@
                     </div>
                     <div class="form-group">
                         <label for="gambar_berita">Gambar Berita</label>
-                        <input type="file" class="form-control" id="gambar_berita" name="gambar_berita">
+                        <input type="file" class="form-control" id="gambar_berita" name="gambar_berita" required>
                     </div>
                 </div>
                 <div class="modal-footer">
