@@ -166,7 +166,7 @@ if (session()->getFlashData('failed')) {
                     </div>
                     <div class="form-group">
                         <label for="gambar">Gambar</label>
-                        <input type="file" class="form-control" id="gambar" name="gambar">
+                        <input type="file" class="form-control" id="gambar" name="gambar" required>
                     </div>
                     <div class="form-group">
                         <label for="tanggal">Tanggal</label>
