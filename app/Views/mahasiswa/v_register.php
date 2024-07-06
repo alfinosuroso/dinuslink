@@ -79,7 +79,7 @@
         'name' => 'nim',
         'id' => 'nim',
         'class' => 'form-control',
-        'placeholder' => 'Enter your NIM'
+        'placeholder' => 'Start NIM with '
     ];
     $password = [
         'name' => 'password',
