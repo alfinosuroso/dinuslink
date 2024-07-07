@@ -44,10 +44,15 @@ class VerificationEvent extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'isReadDetail' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => TRUE,
+            ],
             'status' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'null' => FALSE,
+                'null' => TRUE,
             ],
             'created_at' => [
                 'type' => 'datetime',

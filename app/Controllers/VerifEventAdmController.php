@@ -127,4 +127,15 @@ class VerifEventAdmController extends BaseController
 
         return redirect()->to('verifeventadm')->with('success', 'Status berhasil diubah menjadi Pending');
     }
+
+    public function readData($id)
+    {
+        $dataForm = [
+            'isReadDetail' => 'TRUE'
+        ];
+
+        $this->verifyEvent->update($id, $dataForm);
+
+        return redirect()->to('verifeventadm')->with('success', 'Status berhasil diubah menjadi Pending');
+    }
 }
