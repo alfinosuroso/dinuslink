@@ -83,7 +83,9 @@ $routes->group('verifeventadm', function($routes){
     $routes->get('','VerifEventAdmController::index');
     $routes->post('create','VerifEventAdmController::create');
     $routes->post('accept', 'VerifEventAdmController::accept');
-    $routes->get('reject/(:any)', 'VerifEventAdmController::reject/$1');
+    $routes->post('reject/(:any)', 'VerifEventAdmController::reject/$1');
+    $routes->post('pending/(:any)', 'VerifEventAdmController::pending/$1');
+    $routes->post('updateStatus', 'VerifEventAdmController::updateStatus');
 });
 
 $routes->group('komunitasadm', ['filter' => 'authMhs'], ['filter' => 'auth'], function($routes){

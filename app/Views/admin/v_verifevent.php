@@ -64,30 +64,27 @@
                 <td><?php echo $item['created_at'] ?></td>
                 <td><?php echo $item['updated_at'] ?></td>
                 <td>
-                    <?php
-                    if ($item['status'] != "ACCEPT") {
-                    ?>
-                        <form action="<?= base_url('verifeventadm/accept') ?>" method="post" style="display: inline;">
-                            <input type="hidden" name="id" value="<?= $item['id'] ?>">
-                            <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin untuk accept ini?')">Accept</button>
-                        </form>
 
-                        <?php
-                        if ($item['status'] != "REJECT") {
-                        ?>
-                            <a href="<?= base_url('verifeventadm/reject/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Anda yakin untuk reject ini?')">
-                                Reject
-                            </a>
-                        <?php
-                        }
-                        ?>
-                    <?php
-                    } else if ($item['status'] == "ACCEPT") {
-                    ?>
-                        <p>Anda sudah Accept event ini</p>
-                    <?php
-                    }
-                    ?>
+                    <form action="<?= base_url('verifeventadm/accept') ?>" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                        <button type="submit" class="btn btn-success" onclick="return confirm('Anda yakin untuk accept ini?')">Accept</button>
+                    </form>
+                    <a href="<?= base_url('verifeventadm/reject/' . $item['id']) ?>" class="btn btn-danger" onclick="return confirm('Anda yakin untuk reject ini?')">
+                        Reject
+                    </a>
+                </td>
+
+                <td>
+                    <form action="<?= base_url('verifeventadm/updateStatus') ?>" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                        <select name="status" class="form-control" required>
+                            <option value="" disabled <?= empty($item['status']) ? 'selected' : '' ?>>--Select Status--</option>
+                            <option value="accept" <?= strtolower($item['status']) == 'accept' ? 'selected' : '' ?>>Accept</option>
+                            <option value="pending" <?= strtolower($item['status']) == 'pending' ? 'selected' : '' ?>>Pending</option>
+                            <option value="reject" <?= strtolower($item['status']) == 'reject' ? 'selected' : '' ?>>Reject</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary" onclick="return confirm('Anda yakin untuk mengubah status ini?')">Update Status</button>
+                    </form>
                 </td>
             </tr>
             <!-- Edit Modal Begin -->
