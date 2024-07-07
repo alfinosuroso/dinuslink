@@ -51,10 +51,24 @@ if (session()->getFlashData('failed')) {
                 <td><?php echo $item['deskripsi'] ?></td>
                 <td><?php echo $item['tanggal'] ?></td>
                 <td>
-                    <?php if ($item['gambar'] != '' && file_exists("img-event/" . $item['gambar'])) : ?>
-                        <img src="<?php echo base_url() . "img-event/" . $item['gambar'] ?>" width="100px">
-                    <?php endif; ?>
-                </td>
+                                    <?php if ($item['gambar'] != '' && file_exists("img-event/" . $item['gambar'])) : ?>
+                                        <img src="<?= base_url("img-event/" . $item['gambar']) ?>" class="img-fluid" style="max-width: 100px;" data-bs-toggle="modal" data-bs-target="#imageModal-<?= $item['id'] ?>">
+                                        <!-- Image Modal -->
+                                        <div class="modal fade" id="imageModal-<?= $item['id'] ?>" tabindex="-1" aria-labelledby="imageModalLabel-<?= $item['id'] ?>" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="imageModalLabel-<?= $item['id'] ?>">Image Preview</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <img src="<?= base_url("img-event/" . $item['gambar']) ?>" class="img-fluid" alt="Event Image">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </td>
                 <td><?php echo $item['created_at'] ?></td>
                 <td><?php echo $item['updated_at'] ?></td>
                 <td>
