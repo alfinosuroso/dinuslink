@@ -95,26 +95,36 @@
                                 <td><?php echo $item['created_at'] ?></td>
                                 <td><?php echo $item['updated_at'] ?></td>
                                 <td>
-                                    <form action="<?= base_url('verifeventadm/updateStatus') ?>" method="post" style="display: inline;">
-                                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
-                                        <select name="status" class="form-control" required>
-                                            <option value="" disabled <?= empty($item['status']) ? 'selected' : '' ?>>--Select Status--</option>
-                                            <option value="accept" <?= strtolower($item['status']) == 'accept' ? 'selected' : '' ?>>Accept</option>
-                                            <option value="pending" <?= strtolower($item['status']) == 'pending' ? 'selected' : '' ?>>Pending</option>
-                                            <option value="reject" <?= strtolower($item['status']) == 'reject' ? 'selected' : '' ?>>Reject</option>
-                                        </select>
-                                        <?php if ($item['isReadDetail'] == 'TRUE') {
-                                        ?>
-                                            <button type="submit" class="btn btn-primary" onclick="return confirm('Anda yakin untuk mengubah status ini?')">Update Status</button>
+                                    <?php if ($item['isReadDetail'] == 'TRUE') {
+                                    ?>
+                                        <form action="<?= base_url('verifeventadm/updateStatus') ?>" method="post" style="display: inline;">
                                         <?php
-                                        } ?>
+                                    } ?>
 
                                         <?php if ($item['isReadDetail'] != 'TRUE') {
                                         ?>
-                                            <button type="submit" class="btn btn-primary" onclick="return alert('Pastikan anda mendownload/melihat detail proposal')">Update Status</button>
-                                        <?php
+                                            <form action="<?= base_url('verifeventadm') ?>" style="display: inline;">
+                                            <?php
                                         } ?>
-                                    </form>
+                                            <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                                            <select name="status" class="form-control" required>
+                                                <option value="" disabled <?= empty($item['status']) ? 'selected' : '' ?>>--Select Status--</option>
+                                                <option value="accept" <?= strtolower($item['status']) == 'accept' ? 'selected' : '' ?>>Accept</option>
+                                                <option value="pending" <?= strtolower($item['status']) == 'pending' ? 'selected' : '' ?>>Pending</option>
+                                                <option value="reject" <?= strtolower($item['status']) == 'reject' ? 'selected' : '' ?>>Reject</option>
+                                            </select>
+                                            <?php if ($item['isReadDetail'] == 'TRUE') {
+                                            ?>
+                                                <button type="submit" class="btn btn-primary" onclick="return confirm('Anda yakin untuk mengubah status ini?')">Update Status</button>
+                                            <?php
+                                            } ?>
+
+                                            <?php if ($item['isReadDetail'] != 'TRUE') {
+                                            ?>
+                                                <button type="submit" class="btn btn-primary" onclick="return alert('Pastikan anda mendownload/melihat detail proposal')">Update Status</button>
+                                            <?php
+                                            } ?>
+                                            </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
