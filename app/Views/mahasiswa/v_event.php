@@ -87,7 +87,13 @@ $desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor maxime,
                                 <div class="portfolio-item-details">
                                     <div class="portfolio-item-name-truncate">
                                         <?php echo $verify['judul'] ?>
-                                        <?php echo '(' . $verify['status'] . ')' ?>
+                                        <?php
+                                        if ($verify['status'] == NULL) {
+                                            echo ('(PENDING)');
+                                        } else {
+                                            echo '(' . $verify['status'] . ')';
+                                        }
+                                        ?>
                                         <br>
                                         <small><?php echo $verify['deskripsi'] ?></small>
                                     </div> <!-- /.portfolio-item-name-truncate -->

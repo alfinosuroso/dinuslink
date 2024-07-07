@@ -47,7 +47,7 @@ class VerificationEvent extends Migration
             'status' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'null' => FALSE,
+                'null' => TRUE,
             ],
             'created_at' => [
                 'type' => 'datetime',

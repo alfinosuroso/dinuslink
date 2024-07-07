@@ -40,7 +40,14 @@
                         <img src="<?php echo base_url() . "img-event/" . $item['proposal'] ?>" width="100px">
                     <?php endif; ?>
                 </td>
-                <td><?php echo $item['status'] ?></td>
+                <td><?php
+                    if ($item['status'] == NULL) {
+                        echo ('BELUM DITINJAU');
+                    } else {
+                        echo $item['status'];
+                    }
+                    ?>
+                </td>
                 <td><?php echo $item['created_at'] ?></td>
                 <td><?php echo $item['updated_at'] ?></td>
                 <td>
