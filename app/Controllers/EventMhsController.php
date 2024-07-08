@@ -53,7 +53,7 @@ class EventMhsController extends BaseController
                 'nim' => session('nim'), 
                 'judul' => $this->request->getPost('judul'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
-                'status' => NULL,
+                'status' => null,
                 'tanggal' => $this->request->getPost('tanggal'),
                 'created_at' => date("Y-m-d H:i:s")
             ];
