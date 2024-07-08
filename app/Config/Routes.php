@@ -85,6 +85,7 @@ $routes->group('verifeventadm', function($routes){
     $routes->post('accept', 'VerifEventAdmController::accept');
     $routes->post('reject/(:any)', 'VerifEventAdmController::reject/$1');
     $routes->post('pending/(:any)', 'VerifEventAdmController::pending/$1');
+    $routes->post('readData/(:any)', 'VerifEventAdmController::readData/$1');
     $routes->post('updateStatus', 'VerifEventAdmController::updateStatus');
 });
 

@@ -18,7 +18,8 @@ class VerificationSeeder extends Seeder
                 'tanggal' => date("Y-m-d H:i:s"),
                 'gambar' => 'itc.png',
                 'proposal' => 'itc.png',
-                'status' => 'PENDING',
+                'isReadDetail' => null,
+                'status' => null,
                 'created_at' => date("Y-m-d H:i:s"),
             ],
         ];
