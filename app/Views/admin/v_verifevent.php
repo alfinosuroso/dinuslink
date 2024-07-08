@@ -48,7 +48,7 @@
                                 <td><?= $item['tanggal'] ?></td>
                                 <td>
                                     <?php if ($item['gambar'] != '' && file_exists("img-event/" . $item['gambar'])) : ?>
-                                        <img src="<?= base_url("img-event/" . $item['gambar']) ?>" class="img-fluid" style="max-width: 100px;" data-bs-toggle="modal" data-bs-target="#imageModal-<?= $item['id'] ?>">
+                                        <img src="<?= base_url("img-event/" . $item['gambar']) ?>" class="img-fluid clickable-image" style="max-width: 100px;" data-bs-toggle="modal" data-bs-target="#imageModal-<?= $item['id'] ?>" data-id="<?= $item['id'] ?>">
                                         <!-- Image Modal -->
                                         <div class="modal fade" id="imageModal-<?= $item['id'] ?>" tabindex="-1" aria-labelledby="imageModalLabel-<?= $item['id'] ?>" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -67,7 +67,7 @@
                                 </td>
                                 <td>
                                     <?php if ($item['proposal'] != '' && file_exists("img-event/" . $item['proposal'])) : ?>
-                                        <img src="<?= base_url("CustomAssets/assets/pdf-icon.svg") ?>" width="50px" data-bs-toggle="modal" data-bs-target="#proposalModal-<?= $item['id'] ?>" alt="PDF Icon">
+                                        <img src="<?= base_url("CustomAssets/assets/pdf-icon.svg") ?>" class="clickable-pdf" width="50px" data-bs-toggle="modal" data-bs-target="#proposalModal-<?= $item['id'] ?>" alt="PDF Icon" data-id="<?= $item['id'] ?>">
                                         <!-- Proposal Modal -->
                                         <div class="modal fade" id="proposalModal-<?= $item['id'] ?>" tabindex="-1" aria-labelledby="proposalModalLabel-<?= $item['id'] ?>" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -84,47 +84,20 @@
                                         </div>
                                     <?php endif; ?>
                                 </td>
-                                <td><?php
-                                    if ($item['status'] == NULL) {
-                                        echo ('BELUM DITINJAU');
-                                    } else {
-                                        echo $item['status'];
-                                    }
-                                    ?>
-                                </td>
-                                <td><?php echo $item['created_at'] ?></td>
-                                <td><?php echo $item['updated_at'] ?></td>
+                                <td><?= $item['status'] ?? 'BELUM DITINJAU' ?></td>
+                                <td><?= $item['created_at'] ?></td>
+                                <td><?= $item['updated_at'] ?></td>
                                 <td>
-                                    <?php if ($item['isReadDetail'] == 'TRUE') {
-                                    ?>
-                                        <form action="<?= base_url('verifeventadm/updateStatus') ?>" method="post" style="display: inline;">
-                                        <?php
-                                    } ?>
-
-                                        <?php if ($item['isReadDetail'] != 'TRUE') {
-                                        ?>
-                                            <form action="<?= base_url('verifeventadm') ?>" style="display: inline;">
-                                            <?php
-                                        } ?>
-                                            <input type="hidden" name="id" value="<?= $item['id'] ?>">
-                                            <select name="status" class="form-control" required>
-                                                <option value="" disabled <?= empty($item['status']) ? 'selected' : '' ?>>--Select Status--</option>
-                                                <option value="accept" <?= strtolower($item['status']) == 'accept' ? 'selected' : '' ?>>Accept</option>
-                                                <option value="pending" <?= strtolower($item['status']) == 'pending' ? 'selected' : '' ?>>Pending</option>
-                                                <option value="reject" <?= strtolower($item['status']) == 'reject' ? 'selected' : '' ?>>Reject</option>
-                                            </select>
-                                            <?php if ($item['isReadDetail'] == 'TRUE') {
-                                            ?>
-                                                <button type="submit" class="btn btn-primary" onclick="return confirm('Anda yakin untuk mengubah status ini?')">Update Status</button>
-                                            <?php
-                                            } ?>
-
-                                            <?php if ($item['isReadDetail'] != 'TRUE') {
-                                            ?>
-                                                <button type="submit" class="btn btn-primary" onclick="return alert('Pastikan anda mendownload/melihat detail proposal')">Update Status</button>
-                                            <?php
-                                            } ?>
-                                            </form>
+                                    <form action="<?= base_url('verifeventadm/updateStatus') ?>" method="post" class="submit-form">
+                                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                                        <select name="status" class="form-control" required>
+                                            <option value="" disabled <?= empty($item['status']) ? 'selected' : '' ?>>--Select Status--</option>
+                                            <option value="accept" <?= strtolower($item['status']) == 'accept' ? 'selected' : '' ?>>Accept</option>
+                                            <option value="pending" <?= strtolower($item['status']) == 'pending' ? 'selected' : '' ?>>Pending</option>
+                                            <option value="reject" <?= strtolower($item['status']) == 'reject' ? 'selected' : '' ?>>Reject</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary btn-submit" data-id="<?= $item['id'] ?>" onclick="return validateForm(this)">Update Status</button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -192,5 +165,43 @@
     </div>
 </div>
 <!-- End Modal Tambah Data -->
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const clickableImages = document.querySelectorAll('.clickable-image');
+    const clickablePdfs = document.querySelectorAll('.clickable-pdf');
+
+    const handleImageClick = (event) => {
+        localStorage.setItem(`imageClicked-${event.target.dataset.id}`, 'true');
+    };
+
+    const handlePdfClick = (event) => {
+        localStorage.setItem(`pdfClicked-${event.target.dataset.id}`, 'true');
+    };
+
+    clickableImages.forEach((img) => {
+        img.addEventListener('click', handleImageClick);
+    });
+
+    clickablePdfs.forEach((pdf) => {
+        pdf.addEventListener('click', handlePdfClick);
+    });
+
+    window.validateForm = (button) => {
+        const id = button.dataset.id;
+        const imageClicked = localStorage.getItem(`imageClicked-${id}`) === 'true';
+        const pdfClicked = localStorage.getItem(`pdfClicked-${id}`) === 'true';
+
+        if (!imageClicked || !pdfClicked) {
+            alert('Pastikan anda melihat/meninjau gambar dan PDF terlebih dahulu');
+            return false;
+        }
+
+        return confirm('Anda yakin untuk mengubah status ini?');
+    };
+});
+
+</script>
+
 
 <?= $this->endSection() ?>
