@@ -48,7 +48,7 @@
                                 <td><?= $item['tanggal'] ?></td>
                                 <td>
                                     <?php if ($item['gambar'] != '' && file_exists("img-event/" . $item['gambar'])) : ?>
-                                        <img src="<?= base_url("img-event/" . $item['gambar']) ?>" class="img-fluid clickable-image" style="max-width: 100px;" data-bs-toggle="modal" data-bs-target="#imageModal-<?= $item['id'] ?>" data-id="<?= $item['id'] ?>">
+                                        <img src="<?= base_url("img-event/" . $item['gambar']) ?>" class="img-fluid clickable-image" style="max-width: 300px;" data-bs-toggle="modal" data-bs-target="#imageModal-<?= $item['id'] ?>" data-id="<?= $item['id'] ?>">
                                         <!-- Image Modal -->
                                         <div class="modal fade" id="imageModal-<?= $item['id'] ?>" tabindex="-1" aria-labelledby="imageModalLabel-<?= $item['id'] ?>" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
                                     <?php endif; ?>
-                                </td>
+                                </td>
                                 <td>
                                     <?php if ($item['proposal'] != '' && file_exists("img-event/" . $item['proposal'])) : ?>
                                         <img src="<?= base_url("CustomAssets/assets/pdf-icon.svg") ?>" class="clickable-pdf" width="50px" data-bs-toggle="modal" data-bs-target="#proposalModal-<?= $item['id'] ?>" alt="PDF Icon" data-id="<?= $item['id'] ?>">
@@ -93,7 +93,6 @@
                                         <select name="status" class="form-control" required>
                                             <option value="" disabled <?= empty($item['status']) ? 'selected' : '' ?>>--Select Status--</option>
                                             <option value="accept" <?= strtolower($item['status']) == 'accept' ? 'selected' : '' ?>>Accept</option>
-                                            <option value="pending" <?= strtolower($item['status']) == 'pending' ? 'selected' : '' ?>>Pending</option>
                                             <option value="reject" <?= strtolower($item['status']) == 'reject' ? 'selected' : '' ?>>Reject</option>
                                         </select>
                                         <button type="submit" class="btn btn-primary btn-submit" data-id="<?= $item['id'] ?>" onclick="return validateForm(this)">Update Status</button>
