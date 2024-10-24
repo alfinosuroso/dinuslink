@@ -13,3 +13,6 @@ DINUS LINK adalah website untuk menemukan partner lomba sesama mahasiswa UDINUS
 - php spark db:seed NewsDetailSeeder
 - php spark db:seed UserSeeder
 - php spark db:seed VerificationSeeder
+- php spark serve
+- Login admin : User => admin , Password => admin
+- Untuk user bisa register dulu baru login
